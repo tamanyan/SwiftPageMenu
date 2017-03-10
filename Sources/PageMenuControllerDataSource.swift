@@ -16,5 +16,5 @@ public protocol PageMenuControllerDataSource: class {
     func menuTitles(forPageMenuController pageboyViewController: PageMenuController) -> [String]
 
     /// The default page index to display in the Pageboy view controller.
-    func defaultPageIndex(forPageMenuController pageboyViewController: PageMenuController) -> Int
+    func defaultPageIndex(forPageMenuController pageboyViewController: PageMenuController) -> Int?
 }

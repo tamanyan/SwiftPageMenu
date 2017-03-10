@@ -55,7 +55,7 @@ open class PageMenuController: UIViewController {
         return tabView
     }()
 
-    fileprivate var beforeIndex: Int = 0
+    fileprivate var beforeIndex: Int?
 
     public var isInfinite: Bool {
         return self.options.isInfinite
@@ -146,16 +146,23 @@ open class PageMenuController: UIViewController {
     // MARK: - View
 
     fileprivate func reloadPages(reloadViewControllers: Bool) {
-        if let titles = self.dataSource?.menuTitles(forPageMenuController: self) {
+        guard let defaultIndex = self.dataSource?.defaultPageIndex(forPageMenuController: self) else {
+            self.tabView.pageTabItems = []
+            return
+        }
+
+        if self.beforeIndex == nil {
+            self.beforeIndex = 0
+        }
+
+        if let titles = self.dataSource?.menuTitles(forPageMenuController: self), let beforeIndex = self.beforeIndex {
             self.tabView.pageTabItems = titles
-            self.tabView.updateCurrentIndex(self.beforeIndex, shouldScroll: true, animated: false)
+            self.tabView.updateCurrentIndex(beforeIndex, shouldScroll: true, animated: false)
         }
 
         if reloadViewControllers || self.viewControllers == nil {
             self.viewControllers = self.dataSource?.viewControllers(forPageMenuController: self)
         }
-
-        let defaultIndex = self.dataSource?.defaultPageIndex(forPageMenuController: self) ?? 0
 
         guard defaultIndex < self.viewControllers?.count ?? 0,
             let viewController = self.viewControllers?[defaultIndex] else {
@@ -228,11 +235,16 @@ extension PageMenuController: EMPageViewControllerDelegate {
     }
 
     func em_pageViewController(_ pageViewController: EMPageViewController, isScrollingFrom startingViewController: UIViewController, destinationViewController: UIViewController?, direction: EMPageViewControllerNavigationDirection, progress: CGFloat) {
+        guard let beforeIndex = self.beforeIndex else {
+            return
+        }
+
         var index: Int
+
         if progress > 0 {
-            index = self.beforeIndex + 1
+            index = beforeIndex + 1
         } else {
-            index = self.beforeIndex - 1
+            index = beforeIndex - 1
         }
 
         if index == self.tabItemCount {

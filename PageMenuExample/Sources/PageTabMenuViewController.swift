@@ -42,7 +42,7 @@ extension PageTabMenuViewController: PageMenuControllerDataSource {
         return self.titles
     }
 
-    func defaultPageIndex(forPageMenuController pageMenuViewController: PageMenuController) -> Int {
+    func defaultPageIndex(forPageMenuController pageMenuViewController: PageMenuController) -> Int? {
         return 0
     }
 }
