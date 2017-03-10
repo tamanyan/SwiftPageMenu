@@ -50,6 +50,11 @@ public enum TabMenuPosition {
     case bottom
 }
 
+public enum PageMenuLayout {
+    case layoutGuide
+    case edge
+}
+
 public protocol PageMenuOptions {
     var isInfinite: Bool { get }
     var font: UIFont { get }
@@ -60,6 +65,7 @@ public protocol PageMenuOptions {
     var menuCursor: PageMenuCursor { get }
     var tabMenuBackgroundColor: UIColor { get }
     var tabMenuPosition: TabMenuPosition { get }
+    var layout: PageMenuLayout { get }
 }
 
 extension PageMenuOptions {
@@ -69,6 +75,10 @@ extension PageMenuOptions {
 
     public var tabMenuPosition: TabMenuPosition {
         return .top
+    }
+
+    public var layout: PageMenuLayout {
+        return .edge
     }
 }
 

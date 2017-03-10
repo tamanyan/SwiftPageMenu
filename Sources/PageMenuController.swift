@@ -195,25 +195,41 @@ open class PageMenuController: UIViewController {
             self.pageViewController.view.topAnchor.constraint(equalTo: self.tabView.bottomAnchor).isActive = true
             self.pageViewController.view.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
             self.pageViewController.view.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
-            self.pageViewController.view.bottomAnchor.constraint(equalTo: self.bottomLayoutGuide.topAnchor).isActive = true
 
             // setup tab view layout
             self.tabView.heightAnchor.constraint(equalToConstant: options.menuItemSize.height).isActive = true
-            self.tabView.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor).isActive = true
             self.tabView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
             self.tabView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
+
+            // use layout guide or edge
+            switch self.options.layout {
+            case .layoutGuide:
+                self.pageViewController.view.bottomAnchor.constraint(equalTo: self.bottomLayoutGuide.topAnchor).isActive = true
+                self.tabView.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor).isActive = true
+            case .edge:
+                self.pageViewController.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+                self.tabView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+            }
         case .bottom:
             // setup page view controller layout
-            self.pageViewController.view.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor).isActive = true
             self.pageViewController.view.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
             self.pageViewController.view.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
             self.pageViewController.view.bottomAnchor.constraint(equalTo: self.tabView.topAnchor).isActive = true
 
             // setup tab view layout
             self.tabView.heightAnchor.constraint(equalToConstant: options.menuItemSize.height).isActive = true
-            self.tabView.bottomAnchor.constraint(equalTo: self.bottomLayoutGuide.topAnchor).isActive = true
             self.tabView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
             self.tabView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
+
+            // use layout guide or edge
+            switch self.options.layout {
+            case .layoutGuide:
+                self.pageViewController.view.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor).isActive = true
+                self.tabView.bottomAnchor.constraint(equalTo: self.bottomLayoutGuide.topAnchor).isActive = true
+            case .edge:
+                self.pageViewController.view.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+                self.tabView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+            }
         }
 
         self.view.sendSubview(toBack: self.pageViewController.view)
