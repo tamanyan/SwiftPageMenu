@@ -128,11 +128,17 @@ open class PageMenuController: UIViewController {
         self.tabView.updateCollectionViewUserInteractionEnabled(false)
 
         let completion: ((Bool) -> Void) = { [weak self] _ in
-            self?.beforeIndex = index
-            self?.pageViewController.delegate = self
-            self?.tabView.updateCollectionViewUserInteractionEnabled(true)
+            guard let this = self else {
+                return
+            }
+
+            this.beforeIndex = index
+            this.pageViewController.delegate = this
+            this.tabView.updateCollectionViewUserInteractionEnabled(true)
+            this.delegate?.pageMenuViewController(this, didScrollToPageAtIndex: index, direction: direction.toPageMenuNavigationDirection)
         }
 
+        self.delegate?.pageMenuViewController(self, willScrollToPageAtIndex: self.currentIndex ?? 0, direction: direction.toPageMenuNavigationDirection)
         self.pageViewController.selectViewController(
             viewControllers[index],
             direction: direction,

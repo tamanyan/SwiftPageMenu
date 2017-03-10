@@ -50,10 +50,12 @@ extension PageTabMenuViewController: PageMenuControllerDataSource {
 extension PageTabMenuViewController: PageMenuControllerDelegate {
     func pageMenuViewController(_ pageMenuViewController: PageMenuController, didScrollToPageAtIndex index: Int, direction: PageMenuNavigationDirection) {
         // The page view controller will begin scrolling to a new page.
+        print("didScrollToPageAtIndex index:\(index)")
     }
 
     func pageMenuViewController(_ pageMenuViewController: PageMenuController, willScrollToPageAtIndex index: Int, direction: PageMenuNavigationDirection) {
         // The page view controller scroll progress between pages.
+        print("willScrollToPageAtIndex index:\(index)")
     }
 
     func pageMenuViewController(_ pageMenuViewController: PageMenuController, scrollingProgress progress: CGFloat, direction: PageMenuNavigationDirection) {
