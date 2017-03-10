@@ -114,8 +114,8 @@
 				23C1D2531E7309B100A4A491 /* PageTabMenuViewController.swift */,
 				23C1D2541E7309B100A4A491 /* RootViewController.swift */,
 				23C1D2551E7309B100A4A491 /* RoundRectPagerOptions.swift */,
-				23C1D2561E7309B100A4A491 /* Theme.swift */,
 				23C1D2571E7309B100A4A491 /* UnderlinePagerOption.swift */,
+				23C1D2561E7309B100A4A491 /* Theme.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";

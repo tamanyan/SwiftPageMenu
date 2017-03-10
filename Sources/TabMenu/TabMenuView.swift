@@ -8,7 +8,7 @@
 
 import UIKit
 
-internal class TabMenuView: UIView {
+class TabMenuView: UIView {
     var pageItemPressedBlock: ((_ index: Int, _ direction: EMPageViewControllerNavigationDirection) -> Void)?
 
     var pageTabItems: [String] = [] {

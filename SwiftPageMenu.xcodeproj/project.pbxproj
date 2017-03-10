@@ -20,6 +20,7 @@
 		23C1D2061E73059500A4A491 /* EMPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C1D1FA1E73059500A4A491 /* EMPageViewController.swift */; };
 		23C1D2071E73059500A4A491 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C1D1FB1E73059500A4A491 /* UIColor+Extension.swift */; };
 		23C1D2081E73059500A4A491 /* UIScrollView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C1D1FC1E73059500A4A491 /* UIScrollView+Extensions.swift */; };
+		23C1D26B1E73175100A4A491 /* PageMenuNavigationDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C1D26A1E73175100A4A491 /* PageMenuNavigationDirection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		23C1D1FA1E73059500A4A491 /* EMPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMPageViewController.swift; sourceTree = "<group>"; };
 		23C1D1FB1E73059500A4A491 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		23C1D1FC1E73059500A4A491 /* UIScrollView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extensions.swift"; sourceTree = "<group>"; };
+		23C1D26A1E73175100A4A491 /* PageMenuNavigationDirection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageMenuNavigationDirection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,11 +83,11 @@
 			isa = PBXGroup;
 			children = (
 				23C1D1EE1E73059500A4A491 /* Enum */,
+				23C1D1F91E73059500A4A491 /* Util */,
+				23C1D1F31E73059500A4A491 /* TabMenu */,
 				23C1D1F01E73059500A4A491 /* PageMenuController.swift */,
 				23C1D1F11E73059500A4A491 /* PageMenuControllerDataSource.swift */,
 				23C1D1F21E73059500A4A491 /* PageMenuControllerDelegate.swift */,
-				23C1D1F31E73059500A4A491 /* TabMenu */,
-				23C1D1F91E73059500A4A491 /* Util */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -94,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				23C1D1EF1E73059500A4A491 /* PageMenuOptions.swift */,
+				23C1D26A1E73175100A4A491 /* PageMenuNavigationDirection.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -101,10 +104,10 @@
 		23C1D1F31E73059500A4A491 /* TabMenu */ = {
 			isa = PBXGroup;
 			children = (
-				23C1D1F41E73059500A4A491 /* RoundRectCursorView.swift */,
 				23C1D1F51E73059500A4A491 /* TabMenuItemCell.swift */,
 				23C1D1F61E73059500A4A491 /* TabMenuItemCursor.swift */,
 				23C1D1F71E73059500A4A491 /* TabMenuView.swift */,
+				23C1D1F41E73059500A4A491 /* RoundRectCursorView.swift */,
 				23C1D1F81E73059500A4A491 /* UnderlineCursorView.swift */,
 			);
 			path = TabMenu;
@@ -202,6 +205,7 @@
 			files = (
 				23C1D2051E73059500A4A491 /* UnderlineCursorView.swift in Sources */,
 				23C1D2061E73059500A4A491 /* EMPageViewController.swift in Sources */,
+				23C1D26B1E73175100A4A491 /* PageMenuNavigationDirection.swift in Sources */,
 				23C1D2031E73059500A4A491 /* TabMenuItemCursor.swift in Sources */,
 				23C1D2081E73059500A4A491 /* UIScrollView+Extensions.swift in Sources */,
 				23C1D2071E73059500A4A491 /* UIColor+Extension.swift in Sources */,

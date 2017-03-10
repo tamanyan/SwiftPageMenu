@@ -61,7 +61,7 @@ open class PageMenuController: UIViewController {
         return self.options.isInfinite
     }
 
-    fileprivate var pageCount: Int {
+    public var pageCount: Int {
         return self.viewControllers?.count ?? 0
     }
 
@@ -97,13 +97,10 @@ open class PageMenuController: UIViewController {
 
         self.tabView.layouted = true
     }
-}
 
+    // MARK: - Public Interface
 
-// MARK: - Public Interface
-
-public extension PageMenuController {
-    public func displayControllerWithIndex(_ index: Int, direction: EMPageViewControllerNavigationDirection, animated: Bool) {
+    fileprivate func displayControllerWithIndex(_ index: Int, direction: EMPageViewControllerNavigationDirection, animated: Bool) {
         guard let viewControllers = self.viewControllers else {
             return
         }
@@ -135,12 +132,9 @@ public extension PageMenuController {
         guard self.isViewLoaded else { return }
         self.tabView.updateCurrentIndex(index, shouldScroll: true)
     }
-}
 
+    // MARK: - View
 
-// MARK: - View
-
-extension PageMenuController {
     fileprivate func reloadPages(reloadViewControllers: Bool) {
         if let titles = self.dataSource?.menuTitles(forPageMenuController: self) {
             self.tabView.pageTabItems = titles
@@ -207,23 +201,23 @@ extension PageMenuController {
 // MARK:- EMPageViewControllerDelegate
 
 extension PageMenuController: EMPageViewControllerDelegate {
-    public func em_pageViewController(_ pageViewController: EMPageViewController, willStartScrollingFrom startingViewController: UIViewController, destinationViewController: UIViewController, direction: EMPageViewControllerNavigationDirection) {
+    func em_pageViewController(_ pageViewController: EMPageViewController, willStartScrollingFrom startingViewController: UIViewController, destinationViewController: UIViewController, direction: EMPageViewControllerNavigationDirection) {
         // Order to prevent the the hit repeatedly during animation
         self.tabView.updateCollectionViewUserInteractionEnabled(false)
-        self.delegate?.pageMenuViewController(self, willScrollToPageAtIndex: self.currentIndex ?? 0, direction: direction)
+        self.delegate?.pageMenuViewController(self, willScrollToPageAtIndex: self.currentIndex ?? 0, direction: direction.toPageMenuNavigationDirection)
     }
 
-    public func em_pageViewController(_ pageViewController: EMPageViewController, didFinishScrollingFrom startingViewController: UIViewController?, destinationViewController: UIViewController, direction: EMPageViewControllerNavigationDirection, transitionSuccessful: Bool) {
+    func em_pageViewController(_ pageViewController: EMPageViewController, didFinishScrollingFrom startingViewController: UIViewController?, destinationViewController: UIViewController, direction: EMPageViewControllerNavigationDirection, transitionSuccessful: Bool) {
         if let currentIndex = self.currentIndex , currentIndex < self.tabItemCount {
             self.tabView.updateCurrentIndex(currentIndex, shouldScroll: true)
             self.beforeIndex = currentIndex
-            self.delegate?.pageMenuViewController(self, didScrollToPageAtIndex: currentIndex, direction: direction)
+            self.delegate?.pageMenuViewController(self, didScrollToPageAtIndex: currentIndex, direction: direction.toPageMenuNavigationDirection)
         }
 
         self.tabView.updateCollectionViewUserInteractionEnabled(true)
     }
 
-    public func em_pageViewController(_ pageViewController: EMPageViewController, isScrollingFrom startingViewController: UIViewController, destinationViewController: UIViewController?, direction: EMPageViewControllerNavigationDirection, progress: CGFloat) {
+    func em_pageViewController(_ pageViewController: EMPageViewController, isScrollingFrom startingViewController: UIViewController, destinationViewController: UIViewController?, direction: EMPageViewControllerNavigationDirection, progress: CGFloat) {
         var index: Int
         if progress > 0 {
             index = self.beforeIndex + 1
@@ -239,16 +233,7 @@ extension PageMenuController: EMPageViewControllerDelegate {
 
         let scrollOffsetX = self.view.frame.width * progress
         self.tabView.scrollCurrentBarView(index, contentOffsetX: scrollOffsetX, progress: progress)
-        self.delegate?.pageMenuViewController(self, scrollingProgress: progress, direction: direction)
-    }
-
-    public func em_pageViewController(_ pageViewController: EMPageViewController, willStartScrollingFrom startingViewController: UIViewController, destinationViewController: UIViewController) {
-    }
-
-    public func em_pageViewController(_ pageViewController: EMPageViewController, didFinishScrollingFrom startingViewController: UIViewController?, destinationViewController: UIViewController, transitionSuccessful: Bool) {
-    }
-
-    public func em_pageViewController(_ pageViewController: EMPageViewController, isScrollingFrom startingViewController: UIViewController, destinationViewController: UIViewController?, progress: CGFloat) {
+        self.delegate?.pageMenuViewController(self, scrollingProgress: progress, direction: direction.toPageMenuNavigationDirection)
     }
 }
 
@@ -280,11 +265,11 @@ extension PageMenuController: EMPageViewControllerDataSource {
         return nil
     }
 
-    public func em_pageViewController(_ pageViewController: EMPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
+    func em_pageViewController(_ pageViewController: EMPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
         return nextViewController(viewController, isAfter: true)
     }
 
-    public func em_pageViewController(_ pageViewController: EMPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
+    func em_pageViewController(_ pageViewController: EMPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         return nextViewController(viewController, isAfter: false)
     }
 }

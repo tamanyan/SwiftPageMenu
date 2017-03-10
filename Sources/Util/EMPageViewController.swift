@@ -33,7 +33,7 @@ import UIKit
 
  - note: If the data source is `nil`, gesture based scrolling will be disabled and all view controllers must be provided through `selectViewController:direction:animated:completion:`.
  */
-@objc public protocol EMPageViewControllerDataSource {
+@objc protocol EMPageViewControllerDataSource {
 
     /**
      Called to optionally return a view controller that is to the left of a given view controller in a horizontal orientation, or above a given view controller in a vertical orientation.
@@ -59,7 +59,7 @@ import UIKit
 /**
  The EMPageViewControllerDelegate protocol is adopted to receive messages for all important events of the page transition process.
  */
-@objc public protocol EMPageViewControllerDelegate {
+@objc protocol EMPageViewControllerDelegate {
 
     /**
      Called before scrolling to a new view controller.
@@ -102,7 +102,7 @@ import UIKit
 /**
  The navigation scroll direction.
  */
-@objc public enum EMPageViewControllerNavigationDirection : Int {
+@objc enum EMPageViewControllerNavigationDirection : Int {
     /// Forward direction. Can be right in a horizontal orientation or down in a vertical orientation.
     case forward
     /// Reverse direction. Can be left in a horizontal orientation or up in a vertical orientation.
@@ -112,7 +112,7 @@ import UIKit
 /**
  The navigation scroll orientation.
  */
-@objc public enum EMPageViewControllerNavigationOrientation: Int {
+@objc enum EMPageViewControllerNavigationOrientation: Int {
     /// Horiziontal orientation. Scrolls left and right.
     case horizontal
     /// Vertical orientation. Scrolls up and down.
@@ -120,20 +120,20 @@ import UIKit
 }
 
 /// Manages page navigation between view controllers. View controllers can be navigated via swiping gestures, or called programmatically.
-open class EMPageViewController: UIViewController, UIScrollViewDelegate {
+class EMPageViewController: UIViewController, UIScrollViewDelegate {
 
     /// The object that provides view controllers on an as-needed basis throughout the navigation of the page view controller.
     ///
     /// If the data source is `nil`, gesture based scrolling will be disabled and all view controllers must be provided through `selectViewController:direction:animated:completion:`.
     ///
     /// - important: If you are using a data source, make sure you set `dataSource` before calling `selectViewController:direction:animated:completion:`.
-    open weak var dataSource: EMPageViewControllerDataSource?
+    weak var dataSource: EMPageViewControllerDataSource?
 
     /// The object that receives messages throughout the navigation process of the page view controller.
-    open weak var delegate: EMPageViewControllerDelegate?
+    weak var delegate: EMPageViewControllerDelegate?
 
     /// The direction scrolling navigation occurs
-    open private(set) var navigationOrientation: EMPageViewControllerNavigationOrientation = .horizontal
+    private(set) var navigationOrientation: EMPageViewControllerNavigationOrientation = .horizontal
 
     private var isOrientationHorizontal: Bool {
         return self.navigationOrientation == .horizontal
@@ -180,7 +180,7 @@ open class EMPageViewController: UIViewController, UIScrollViewDelegate {
     /// Initializes a newly created page view controller with the specified navigation orientation.
     /// - parameter navigationOrientation: The page view controller's navigation scroll direction.
     /// - returns: The initialized page view controller.
-    public convenience init(navigationOrientation: EMPageViewControllerNavigationOrientation) {
+    convenience init(navigationOrientation: EMPageViewControllerNavigationOrientation) {
         self.init()
         self.navigationOrientation = navigationOrientation
     }

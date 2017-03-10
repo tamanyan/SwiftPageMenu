@@ -12,15 +12,15 @@ public protocol PageMenuControllerDelegate: class {
     /// The page view controller will begin scrolling to a new page.
     func pageMenuViewController(_ pageMenuViewController: PageMenuController,
                              willScrollToPageAtIndex index: Int,
-                             direction: EMPageViewControllerNavigationDirection)
-    
+                             direction: PageMenuNavigationDirection)
+
     /// The page view controller scroll progress between pages.
     func pageMenuViewController(_ pageMenuViewController: PageMenuController,
                              scrollingProgress progress: CGFloat,
-                             direction: EMPageViewControllerNavigationDirection)
-    
+                             direction: PageMenuNavigationDirection)
+
     /// The page view controller did complete scroll to a new page.
     func pageMenuViewController(_ pageMenuViewController: PageMenuController,
                              didScrollToPageAtIndex index: Int,
-                             direction: EMPageViewControllerNavigationDirection)
+                             direction: PageMenuNavigationDirection)
 }
