@@ -98,6 +98,15 @@ open class PageMenuController: UIViewController {
         self.tabView.layouted = true
     }
 
+    /**
+     Reload the view controllers in the page view controller.
+     This reloads the dataSource entirely, calling viewControllers(forPageboyViewController:)
+     and defaultPageIndex(forPageboyViewController:).
+    */
+    public func reloadPages() {
+        self.reloadPages(reloadViewControllers: true)
+    }
+
     // MARK: - Public Interface
 
     fileprivate func displayControllerWithIndex(_ index: Int, direction: EMPageViewControllerNavigationDirection, animated: Bool) {
@@ -110,6 +119,7 @@ open class PageMenuController: UIViewController {
         }
 
         if self.pageViewController.selectedViewController == viewControllers[index] {
+            self.tabView.updateCollectionViewUserInteractionEnabled(true)
             return
         }
 

@@ -16,6 +16,7 @@ class TabMenuView: UIView {
             self.pageTabItemsCount = self.pageTabItems.count
             self.beforeIndex = self.pageTabItems.count
             self.collectionView.reloadData()
+            self.cursorView.isHidden = self.pageTabItems.isEmpty
         }
     }
 
