@@ -43,7 +43,7 @@ class RootViewController: UITableViewController, UIGestureRecognizerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "SwiftPager"
+        self.navigationItem.title = "Example"
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
