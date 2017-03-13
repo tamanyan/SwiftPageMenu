@@ -100,8 +100,8 @@ open class PageMenuController: UIViewController {
 
     /**
      Reload the view controllers in the page view controller.
-     This reloads the dataSource entirely, calling viewControllers(forPageboyViewController:)
-     and defaultPageIndex(forPageboyViewController:).
+     This reloads the dataSource entirely, calling viewControllers(forPageMenuViewController:)
+     and defaultPageIndex(forPageMenuViewController:).
     */
     public func reloadPages() {
         self.reloadPages(reloadViewControllers: true)
@@ -135,10 +135,10 @@ open class PageMenuController: UIViewController {
             this.beforeIndex = index
             this.pageViewController.delegate = this
             this.tabView.updateCollectionViewUserInteractionEnabled(true)
-            this.delegate?.pageMenuViewController(this, didScrollToPageAtIndex: index, direction: direction.toPageMenuNavigationDirection)
+            this.delegate?.pageMenuController(this, didScrollToPageAtIndex: index, direction: direction.toPageMenuNavigationDirection)
         }
 
-        self.delegate?.pageMenuViewController(self, willScrollToPageAtIndex: self.currentIndex ?? 0, direction: direction.toPageMenuNavigationDirection)
+        self.delegate?.pageMenuController(self, willScrollToPageAtIndex: self.currentIndex ?? 0, direction: direction.toPageMenuNavigationDirection)
         self.pageViewController.selectViewController(
             viewControllers[index],
             direction: direction,
@@ -243,14 +243,14 @@ extension PageMenuController: EMPageViewControllerDelegate {
     func em_pageViewController(_ pageViewController: EMPageViewController, willStartScrollingFrom startingViewController: UIViewController, destinationViewController: UIViewController, direction: EMPageViewControllerNavigationDirection) {
         // Order to prevent the the hit repeatedly during animation
         self.tabView.updateCollectionViewUserInteractionEnabled(false)
-        self.delegate?.pageMenuViewController(self, willScrollToPageAtIndex: self.currentIndex ?? 0, direction: direction.toPageMenuNavigationDirection)
+        self.delegate?.pageMenuController(self, willScrollToPageAtIndex: self.currentIndex ?? 0, direction: direction.toPageMenuNavigationDirection)
     }
 
     func em_pageViewController(_ pageViewController: EMPageViewController, didFinishScrollingFrom startingViewController: UIViewController?, destinationViewController: UIViewController, direction: EMPageViewControllerNavigationDirection, transitionSuccessful: Bool) {
         if let currentIndex = self.currentIndex , currentIndex < self.tabItemCount {
             self.tabView.updateCurrentIndex(currentIndex, shouldScroll: true)
             self.beforeIndex = currentIndex
-            self.delegate?.pageMenuViewController(self, didScrollToPageAtIndex: currentIndex, direction: direction.toPageMenuNavigationDirection)
+            self.delegate?.pageMenuController(self, didScrollToPageAtIndex: currentIndex, direction: direction.toPageMenuNavigationDirection)
         }
 
         self.tabView.updateCollectionViewUserInteractionEnabled(true)
@@ -277,7 +277,7 @@ extension PageMenuController: EMPageViewControllerDelegate {
 
         let scrollOffsetX = self.view.frame.width * progress
         self.tabView.scrollCurrentBarView(index, contentOffsetX: scrollOffsetX, progress: progress)
-        self.delegate?.pageMenuViewController(self, scrollingProgress: progress, direction: direction.toPageMenuNavigationDirection)
+        self.delegate?.pageMenuController(self, scrollingProgress: progress, direction: direction.toPageMenuNavigationDirection)
     }
 }
 

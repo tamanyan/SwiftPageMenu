@@ -34,31 +34,31 @@ class PageTabMenuViewController: PageMenuController {
 }
 
 extension PageTabMenuViewController: PageMenuControllerDataSource {
-    func viewControllers(forPageMenuController pageMenuViewController: PageMenuController) -> [UIViewController] {
+    func viewControllers(forPageMenuController pageMenuController: PageMenuController) -> [UIViewController] {
         return self.items.map(ChildViewController.init)
     }
 
-    func menuTitles(forPageMenuController pageMenuViewController: PageMenuController) -> [String] {
+    func menuTitles(forPageMenuController pageMenuController: PageMenuController) -> [String] {
         return self.titles
     }
 
-    func defaultPageIndex(forPageMenuController pageMenuViewController: PageMenuController) -> Int? {
+    func defaultPageIndex(forPageMenuController pageMenuController: PageMenuController) -> Int? {
         return 0
     }
 }
 
 extension PageTabMenuViewController: PageMenuControllerDelegate {
-    func pageMenuViewController(_ pageMenuViewController: PageMenuController, didScrollToPageAtIndex index: Int, direction: PageMenuNavigationDirection) {
+    func pageMenuController(_ pageMenuController: PageMenuController, didScrollToPageAtIndex index: Int, direction: PageMenuNavigationDirection) {
         // The page view controller will begin scrolling to a new page.
         print("didScrollToPageAtIndex index:\(index)")
     }
 
-    func pageMenuViewController(_ pageMenuViewController: PageMenuController, willScrollToPageAtIndex index: Int, direction: PageMenuNavigationDirection) {
+    func pageMenuController(_ pageMenuController: PageMenuController, willScrollToPageAtIndex index: Int, direction: PageMenuNavigationDirection) {
         // The page view controller scroll progress between pages.
         print("willScrollToPageAtIndex index:\(index)")
     }
 
-    func pageMenuViewController(_ pageMenuViewController: PageMenuController, scrollingProgress progress: CGFloat, direction: PageMenuNavigationDirection) {
+    func pageMenuController(_ pageMenuController: PageMenuController, scrollingProgress progress: CGFloat, direction: PageMenuNavigationDirection) {
         // The page view controller did complete scroll to a new page.
     }
 }

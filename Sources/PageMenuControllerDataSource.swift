@@ -9,12 +9,12 @@
 import Foundation
 
 public protocol PageMenuControllerDataSource: class {
-    /// The view controllers to display in the Pageboy view controller.
-    func viewControllers(forPageMenuController pageboyViewController: PageMenuController) -> [UIViewController]
+    /// The view controllers to display in the page menu view controller.
+    func viewControllers(forPageMenuController pageMenuController: PageMenuController) -> [UIViewController]
 
-    /// The view controllers to display in the Pageboy view controller.
-    func menuTitles(forPageMenuController pageboyViewController: PageMenuController) -> [String]
+    /// The view controllers to display in the page menu view controller.
+    func menuTitles(forPageMenuController pageMenuController: PageMenuController) -> [String]
 
-    /// The default page index to display in the Pageboy view controller.
-    func defaultPageIndex(forPageMenuController pageboyViewController: PageMenuController) -> Int?
+    /// The default page index to display in the page menu view controller.
+    func defaultPageIndex(forPageMenuController pageMenuController: PageMenuController) -> Int?
 }
