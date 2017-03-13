@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol PageMenuControllerDataSource: class {
+@objc public protocol PageMenuControllerDataSource: class {
     /// The view controllers to display in the page menu view controller.
     func viewControllers(forPageMenuController pageMenuController: PageMenuController) -> [UIViewController]
 
@@ -16,5 +16,5 @@ public protocol PageMenuControllerDataSource: class {
     func menuTitles(forPageMenuController pageMenuController: PageMenuController) -> [String]
 
     /// The default page index to display in the page menu view controller.
-    func defaultPageIndex(forPageMenuController pageMenuController: PageMenuController) -> Int?
+    func defaultPageIndex(forPageMenuController pageMenuController: PageMenuController) -> Int
 }

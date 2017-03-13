@@ -110,6 +110,7 @@ class TabMenuView: UIView {
             rectView.layer.cornerRadius = cornerRadius
             self.cursorView = rectView
         }
+        self.cursorView.isHidden = true
     }
 
     required init?(coder aDecoder: NSCoder) {

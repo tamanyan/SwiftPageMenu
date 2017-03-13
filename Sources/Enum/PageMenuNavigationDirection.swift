@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum PageMenuNavigationDirection {
+@objc public enum PageMenuNavigationDirection: Int {
     /// Forward direction. Can be right in a horizontal orientation or down in a vertical orientation.
     case forward
     /// Reverse direction. Can be left in a horizontal orientation or up in a vertical orientation.
