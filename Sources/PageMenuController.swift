@@ -66,7 +66,7 @@ open class PageMenuController: UIViewController {
     }
 
     fileprivate var tabItemCount: Int {
-        return self.dataSource?.menuTitles(forPageMenuController: self).count ?? 0
+        return self.menuTitles.count
     }
 
     public init(options: PageMenuOptions? = nil) {
@@ -102,7 +102,7 @@ open class PageMenuController: UIViewController {
      Reload the view controllers in the page view controller.
      This reloads the dataSource entirely, calling viewControllers(forPageMenuViewController:)
      and defaultPageIndex(forPageMenuViewController:).
-    */
+     */
     public func reloadPages() {
         self.reloadPages(reloadViewControllers: true)
     }
@@ -159,7 +159,7 @@ open class PageMenuController: UIViewController {
 
         guard let titles = self.dataSource?.menuTitles(forPageMenuController: self),
               let viewControllers = self.dataSource?.viewControllers(forPageMenuController: self) else {
-            return
+                return
         }
 
         if defaultIndex < 0 || defaultIndex >= titles.count || defaultIndex >= viewControllers.count {
@@ -167,8 +167,9 @@ open class PageMenuController: UIViewController {
             return
         }
 
-        if reloadViewControllers || self.viewControllers.count == 0 {
+        if reloadViewControllers || self.viewControllers.count == 0 || self.menuTitles.count == 0 {
             self.viewControllers = viewControllers
+            self.menuTitles = titles
         }
 
         if let beforeIndex = self.beforeIndex {
@@ -177,7 +178,7 @@ open class PageMenuController: UIViewController {
         }
 
         guard defaultIndex < self.viewControllers.count else {
-                return
+            return
         }
 
         self.pageViewController.selectViewController(
@@ -252,7 +253,7 @@ extension PageMenuController: EMPageViewControllerDelegate {
     }
 
     func em_pageViewController(_ pageViewController: EMPageViewController, didFinishScrollingFrom startingViewController: UIViewController?, destinationViewController: UIViewController, direction: EMPageViewControllerNavigationDirection, transitionSuccessful: Bool) {
-        if let currentIndex = self.currentIndex , currentIndex < self.tabItemCount {
+        if let currentIndex = self.currentIndex, currentIndex < self.tabItemCount {
             self.tabView.updateCurrentIndex(currentIndex, shouldScroll: true)
             self.beforeIndex = currentIndex
             self.delegate?.pageMenuController?(self, didScrollToPageAtIndex: currentIndex, direction: direction.toPageMenuNavigationDirection)
