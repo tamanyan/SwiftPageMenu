@@ -9,15 +9,17 @@
 import UIKit
 
 open class PageMenuController: UIViewController {
-    /// SwiftPager configurations
+    /// SwiftPageMenu configurations
     open let options: PageMenuOptions
 
+    /// PageMenuController data source.
     open weak var dataSource: PageMenuControllerDataSource? {
         didSet {
             self.reloadPages(reloadViewControllers: true)
         }
     }
 
+    /// PageMenuController delegate.
     open weak var delegate: PageMenuControllerDelegate?
 
     /// The view controllers that are displayed in the page view controller.
@@ -57,10 +59,12 @@ open class PageMenuController: UIViewController {
 
     fileprivate var beforeIndex: Int?
 
+    /// Check options have infinite mode
     public var isInfinite: Bool {
         return self.options.isInfinite
     }
 
+    /// Get page count
     public var pageCount: Int {
         return self.viewControllers.count
     }
