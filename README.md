@@ -4,10 +4,11 @@ SwiftPageMenu
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/hsylife/SwiftyPickerPopover)
 
 
-![1](https://cloud.githubusercontent.com/assets/2387508/24037077/c537134e-0b3f-11e7-93c2-a2f1184004c4.gif)
-![2](https://cloud.githubusercontent.com/assets/2387508/24037081/c8e18164-0b3f-11e7-855c-fe9e3dde4807.gif)
-![3](https://cloud.githubusercontent.com/assets/2387508/24037083/ca610848-0b3f-11e7-82e2-283faa25a859.gif)
-![4](https://cloud.githubusercontent.com/assets/2387508/24037086/cbf66c0c-0b3f-11e7-9967-cf1d5610b256.gif)
+![1](https://cloud.githubusercontent.com/assets/2387508/24037819/5d0b212c-0b42-11e7-9b7a-00f52bf38ef2.gif)
+![2](https://cloud.githubusercontent.com/assets/2387508/24037820/5d488c7e-0b42-11e7-8418-14c80850631b.gif)
+![3](https://cloud.githubusercontent.com/assets/2387508/24037821/5d63ea50-0b42-11e7-8762-d1aeecc67432.gif)
+![4](https://cloud.githubusercontent.com/assets/2387508/24037822/5d682d9a-0b42-11e7-865c-260080df19d8.gif)
+
 
 Customizable Page Menu ViewController in Swift
 
