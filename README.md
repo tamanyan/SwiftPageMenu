@@ -8,7 +8,7 @@ SwiftPageMenu
 ![2](https://cloud.githubusercontent.com/assets/2387508/24037820/5d488c7e-0b42-11e7-8418-14c80850631b.gif)
 ![3](https://cloud.githubusercontent.com/assets/2387508/24037821/5d63ea50-0b42-11e7-8762-d1aeecc67432.gif)
 ![4](https://cloud.githubusercontent.com/assets/2387508/24037822/5d682d9a-0b42-11e7-865c-260080df19d8.gif)
-
+t
 
 Customizable Page Menu ViewController in Swift
 
@@ -107,6 +107,10 @@ struct RoundRectPagerOption: PageMenuOptions {
 
     var tabMenuBackgroundColor: UIColor {
         return UIColor(red: 3/255, green: 125/255, blue: 233/255, alpha: 1)
+    }
+
+    var tabMenuContentInset: UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
     }
 
     public init(isInfinite: Bool = false, tabMenuPosition: TabMenuPosition = .top) {

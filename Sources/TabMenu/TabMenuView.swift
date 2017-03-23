@@ -57,6 +57,7 @@ class TabMenuView: UIView {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.contentInset = self.options.tabMenuContentInset
 
         return collectionView
     }()
@@ -163,7 +164,7 @@ extension TabMenuView {
                 if self.collectionView.near(edge: .left, clearance: -distance) && distance < 0 {
                     distance = -(self.collectionView.contentOffset.x + self.collectionView.contentInset.left)
                 } else if self.collectionView.near(edge: .right, clearance: distance) && distance > 0 {
-                    distance = self.collectionView.contentSize.width - (self.collectionView.contentOffset.x + self.collectionView.bounds.width)
+                    distance = self.collectionView.contentSize.width - (self.collectionView.contentOffset.x + self.collectionView.bounds.width - self.collectionView.contentInset.right)
                 }
                 self.distance = distance
             }

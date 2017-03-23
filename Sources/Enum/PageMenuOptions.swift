@@ -65,6 +65,7 @@ public protocol PageMenuOptions {
     var menuCursor: PageMenuCursor { get }
     var tabMenuBackgroundColor: UIColor { get }
     var tabMenuPosition: TabMenuPosition { get }
+    var tabMenuContentInset: UIEdgeInsets { get }
     var layout: PageMenuLayout { get }
 }
 
@@ -75,6 +76,10 @@ extension PageMenuOptions {
 
     public var tabMenuPosition: TabMenuPosition {
         return .top
+    }
+
+    public var tabMenuContentInset: UIEdgeInsets {
+        return .zero
     }
 
     public var layout: PageMenuLayout {

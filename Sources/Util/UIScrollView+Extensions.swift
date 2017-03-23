@@ -18,7 +18,7 @@ extension UIScrollView {
         case .left:
             return contentOffset.x + contentInset.left - clearance <= 0
         case .right:
-            return (contentOffset.x + bounds.width + clearance) >= contentSize.width
+            return (contentOffset.x + bounds.width - contentInset.right + clearance) >= contentSize.width
         case .top:
             return contentOffset.y + contentInset.top - clearance <= 0
         case .bottom:

@@ -42,6 +42,10 @@ struct RoundRectPagerOption: PageMenuOptions {
         return Theme.mainColor
     }
 
+    var tabMenuContentInset: UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
+    }
+
     public init(isInfinite: Bool = false, tabMenuPosition: TabMenuPosition = .top) {
         self.isInfinite = isInfinite
         self.tabMenuPosition = tabMenuPosition
