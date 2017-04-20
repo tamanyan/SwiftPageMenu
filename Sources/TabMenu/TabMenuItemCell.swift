@@ -101,7 +101,7 @@ class TabMenuItemCell: UICollectionViewCell {
 // MARK: - View
 
 extension TabMenuItemCell {
-    override var intrinsicContentSize : CGSize {
+    override var intrinsicContentSize: CGSize {
         guard let options = self.options else {
             return .zero
         }

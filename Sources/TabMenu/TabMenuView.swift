@@ -35,7 +35,6 @@ class TabMenuView: UIView {
     fileprivate var collectionViewContentOffsetX: CGFloat?
     fileprivate var currentBarViewWidth: CGFloat = 0.0
     fileprivate var cellForSize: TabMenuItemCell!
-    fileprivate var cachedCellSizes: [IndexPath: CGSize] = [:]
     fileprivate var distance: CGFloat = 0
 
     fileprivate var contentView: UIView = {
@@ -446,15 +445,8 @@ extension TabMenuView: UICollectionViewDelegate {
 
 extension TabMenuView: UICollectionViewDelegateFlowLayout {
     internal func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if let size = cachedCellSizes[indexPath] {
-            return size
-        }
-
         self.configureCell(self.cellForSize, indexPath: indexPath)
-
         let size = cellForSize.sizeThatFits(CGSize(width: collectionView.bounds.width, height: self.options.menuItemSize.height))
-        self.cachedCellSizes[indexPath] = size
-
         return size
     }
 
