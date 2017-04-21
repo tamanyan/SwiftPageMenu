@@ -116,6 +116,20 @@ open class PageMenuController: UIViewController {
         self.reloadPages(reloadViewControllers: true)
     }
 
+    /**
+     Transitions to the next page.
+     */
+    public func scrollToNext(animated: Bool, completion: ((Bool) -> Void)?) {
+        self.pageViewController.scrollForward(animated: animated, completion: completion)
+    }
+
+    /**
+     Transitions to the previous page.
+     */
+    public func scrollToPrevious(animated: Bool, completion: ((Bool) -> Void)?) {
+        self.pageViewController.scrollReverse(animated: animated, completion: completion)
+    }
+
     // MARK: - Public Interface
 
     fileprivate func displayControllerWithIndex(_ index: Int, direction: EMPageViewControllerNavigationDirection, animated: Bool) {
