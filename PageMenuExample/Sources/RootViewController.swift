@@ -10,14 +10,12 @@ import UIKit
 
 class RootViewController: UITableViewController, UIGestureRecognizerDelegate {
     let titles: [String] = [
-        "standard + roundRect",
-        "standard + underline",
-        "infinite + roundRect",
-        "infinite + underline",
-        "infinite + roundRect + bottomMenu",
-//        "standard + few page fixwidth menu",
-//        "standard + flexible width menu",
-//        "standard + flexible width bottom menu",
+        "standard, roundRect",
+        "standard, underline",
+        "standard, roundRect, customPositionMenu",
+        "infinite, roundRect",
+        "infinite, underline",
+        "infinite, roundRect, bottomMenu",
     ]
 
     let items: [[String]] = [
@@ -84,17 +82,24 @@ class RootViewController: UITableViewController, UIGestureRecognizerDelegate {
             let pageViewController = PageTabMenuViewController(
                 items: items,
                 titles: tabTitles,
-                options: RoundRectPagerOption(isInfinite: true))
+                options: RoundRectPagerOption(isInfinite: true, tabMenuPosition: .custom))
             pageViewController.navigationItem.title = self.titles[indexPath.row]
             self.navigationController?.pushViewController(pageViewController, animated: true)
         } else if indexPath.row == 3 {
             let pageViewController = PageTabMenuViewController(
                 items: items,
                 titles: tabTitles,
-                options: UnderlinePagerOption(isInfinite: true))
+                options: RoundRectPagerOption(isInfinite: true))
             pageViewController.navigationItem.title = self.titles[indexPath.row]
             self.navigationController?.pushViewController(pageViewController, animated: true)
         } else if indexPath.row == 4 {
+            let pageViewController = PageTabMenuViewController(
+                items: items,
+                titles: tabTitles,
+                options: UnderlinePagerOption(isInfinite: true))
+            pageViewController.navigationItem.title = self.titles[indexPath.row]
+            self.navigationController?.pushViewController(pageViewController, animated: true)
+        } else if indexPath.row == 5 {
             let pageViewController = PageTabMenuViewController(
                 items: items,
                 titles: tabTitles,

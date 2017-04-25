@@ -48,6 +48,7 @@ extension PageMenuCursor {
 public enum TabMenuPosition {
     case top
     case bottom
+    case custom
 }
 
 public enum PageMenuLayout {

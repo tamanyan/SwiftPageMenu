@@ -47,7 +47,7 @@ open class PageMenuController: UIViewController {
         return vc
     }()
 
-    fileprivate lazy var tabView: TabMenuView = {
+    fileprivate(set) lazy var tabView: TabMenuView = {
         let tabView = TabMenuView(options: self.options)
 
         tabView.pageItemPressedBlock = { [weak self] (index: Int, direction: EMPageViewControllerNavigationDirection) in
@@ -58,6 +58,11 @@ open class PageMenuController: UIViewController {
     }()
 
     fileprivate var beforeIndex: Int?
+
+    /// TabMenuView for custom layout
+    public var tabMenuView: UIView {
+        return self.tabView
+    }
 
     /// Check options have infinite mode
     public var isInfinite: Bool {
@@ -176,6 +181,10 @@ open class PageMenuController: UIViewController {
             return
         }
 
+        if self.tabView.superview == nil {
+            assertionFailure("TabMenuView needs to add subview before setting dataSource when you use custom menu position")
+        }
+
         if self.beforeIndex == nil {
             self.beforeIndex = 0
         }
@@ -212,14 +221,15 @@ open class PageMenuController: UIViewController {
     }
 
     fileprivate func setup() {
-        self.view.addSubview(self.pageViewController.view)
-        self.view.addSubview(self.tabView)
-
-        self.pageViewController.view.translatesAutoresizingMaskIntoConstraints = false
-        self.tabView.translatesAutoresizingMaskIntoConstraints = false
 
         switch self.options.tabMenuPosition {
         case .top:
+            // add views
+            self.view.addSubview(self.pageViewController.view)
+            self.view.addSubview(self.tabView)
+            self.pageViewController.view.translatesAutoresizingMaskIntoConstraints = false
+            self.tabView.translatesAutoresizingMaskIntoConstraints = false
+
             // setup page view controller layout
             self.pageViewController.view.topAnchor.constraint(equalTo: self.tabView.bottomAnchor).isActive = true
             self.pageViewController.view.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
@@ -240,6 +250,12 @@ open class PageMenuController: UIViewController {
                 self.tabView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
             }
         case .bottom:
+            // add views
+            self.view.addSubview(self.pageViewController.view)
+            self.view.addSubview(self.tabView)
+            self.pageViewController.view.translatesAutoresizingMaskIntoConstraints = false
+            self.tabView.translatesAutoresizingMaskIntoConstraints = false
+
             // setup page view controller layout
             self.pageViewController.view.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
             self.pageViewController.view.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
@@ -258,6 +274,24 @@ open class PageMenuController: UIViewController {
             case .edge:
                 self.pageViewController.view.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
                 self.tabView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+            }
+        case .custom:
+            // add views
+            self.view.addSubview(self.pageViewController.view)
+            self.pageViewController.view.translatesAutoresizingMaskIntoConstraints = false
+
+            // setup page view controller layout
+            self.pageViewController.view.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
+            self.pageViewController.view.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
+
+            // use layout guide or edge
+            switch self.options.layout {
+            case .layoutGuide:
+                self.pageViewController.view.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor).isActive = true
+                self.pageViewController.view.bottomAnchor.constraint(equalTo: self.bottomLayoutGuide.topAnchor).isActive = true
+            case .edge:
+                self.pageViewController.view.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+                self.pageViewController.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
             }
         }
 

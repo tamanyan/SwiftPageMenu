@@ -28,6 +28,16 @@ class PageTabMenuViewController: PageMenuController {
         self.edgesForExtendedLayout = []
         self.view.backgroundColor = .white
 
+        if self.options.tabMenuPosition == .custom {
+            self.view.addSubview(self.tabMenuView)
+            self.tabMenuView.translatesAutoresizingMaskIntoConstraints = false
+
+            self.tabMenuView.heightAnchor.constraint(equalToConstant: self.options.menuItemSize.height).isActive = true
+            self.tabMenuView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
+            self.tabMenuView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
+            self.tabMenuView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        }
+
         self.delegate = self
         self.dataSource = self
     }
