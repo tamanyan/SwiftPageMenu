@@ -98,7 +98,7 @@ struct RoundRectPagerOption: PageMenuOptions {
     }
 
     var font: UIFont {
-        return UIFont.systemFont(ofSize: UIFont.systemFontSize)
+        return .systemFont(ofSize: UIFont.systemFontSize)
     }
 
     var menuItemMargin: CGFloat {
@@ -122,7 +122,7 @@ struct RoundRectPagerOption: PageMenuOptions {
 
 ### Carthage
 
-To integrate ViewPagerController into your Xcode project using Carthage, specify it in your Cartfile:
+To integrate SwiftPageMenu into your Xcode project using Carthage, specify it in your Cartfile:
 
 ```ruby
 github "tamanyan/SwiftPageMenu"
