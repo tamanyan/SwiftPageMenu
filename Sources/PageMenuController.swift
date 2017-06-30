@@ -222,20 +222,22 @@ open class PageMenuController: UIViewController {
 
     fileprivate func setup() {
 
+        self.addChildViewController(self.pageViewController)
+        self.view.addSubview(self.pageViewController.view)
+
         switch self.options.tabMenuPosition {
         case .top:
-            // add views
-            self.view.addSubview(self.pageViewController.view)
+            // add tab view
             self.view.addSubview(self.tabView)
-            self.pageViewController.view.translatesAutoresizingMaskIntoConstraints = false
-            self.tabView.translatesAutoresizingMaskIntoConstraints = false
 
             // setup page view controller layout
+            self.pageViewController.view.translatesAutoresizingMaskIntoConstraints = false
             self.pageViewController.view.topAnchor.constraint(equalTo: self.tabView.bottomAnchor).isActive = true
             self.pageViewController.view.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
             self.pageViewController.view.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
 
             // setup tab view layout
+            self.tabView.translatesAutoresizingMaskIntoConstraints = false
             self.tabView.heightAnchor.constraint(equalToConstant: options.menuItemSize.height).isActive = true
             self.tabView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
             self.tabView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
@@ -250,18 +252,17 @@ open class PageMenuController: UIViewController {
                 self.tabView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
             }
         case .bottom:
-            // add views
-            self.view.addSubview(self.pageViewController.view)
+            // add tab view
             self.view.addSubview(self.tabView)
-            self.pageViewController.view.translatesAutoresizingMaskIntoConstraints = false
-            self.tabView.translatesAutoresizingMaskIntoConstraints = false
 
             // setup page view controller layout
+            self.pageViewController.view.translatesAutoresizingMaskIntoConstraints = false
             self.pageViewController.view.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
             self.pageViewController.view.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
             self.pageViewController.view.bottomAnchor.constraint(equalTo: self.tabView.topAnchor).isActive = true
 
             // setup tab view layout
+            self.tabView.translatesAutoresizingMaskIntoConstraints = false
             self.tabView.heightAnchor.constraint(equalToConstant: options.menuItemSize.height).isActive = true
             self.tabView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
             self.tabView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
@@ -276,11 +277,9 @@ open class PageMenuController: UIViewController {
                 self.tabView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
             }
         case .custom:
-            // add views
-            self.view.addSubview(self.pageViewController.view)
-            self.pageViewController.view.translatesAutoresizingMaskIntoConstraints = false
 
             // setup page view controller layout
+            self.pageViewController.view.translatesAutoresizingMaskIntoConstraints = false
             self.pageViewController.view.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
             self.pageViewController.view.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
 
