@@ -9,9 +9,12 @@
 import Foundation
 
 protocol TabMenuItemCursor: class {
+
     var isHidden: Bool { get set }
 
     func setup(parent: UIView, isInfinite: Bool, options: PageMenuOptions)
+
     func updateWidth(width: CGFloat)
+
     func updatePosition(x: CGFloat)
 }

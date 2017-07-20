@@ -10,6 +10,7 @@ import Foundation
 import SwiftPageMenu
 
 struct RoundRectPagerOption: PageMenuOptions {
+
     var isInfinite: Bool = false
 
     var tabMenuPosition: TabMenuPosition = .top

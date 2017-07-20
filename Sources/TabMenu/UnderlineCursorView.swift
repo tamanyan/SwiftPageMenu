@@ -9,7 +9,9 @@
 import UIKit
 
 class UnderlineCursorView: UIView, TabMenuItemCursor {
+
     fileprivate var currentBarViewWidthConstraint: NSLayoutConstraint?
+
     fileprivate var currentBarViewLeftConstraint: NSLayoutConstraint?
 
     override init(frame: CGRect) {

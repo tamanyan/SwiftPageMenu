@@ -9,6 +9,7 @@
 import Foundation
 
 @objc public protocol PageMenuControllerDataSource: class {
+
     /// The view controllers to display in the page menu view controller.
     func viewControllers(forPageMenuController pageMenuController: PageMenuController) -> [UIViewController]
 

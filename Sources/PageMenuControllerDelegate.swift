@@ -9,6 +9,7 @@
 import Foundation
 
 @objc public protocol PageMenuControllerDelegate: class {
+
     /// The page view controller will begin scrolling to a new page.
     @objc optional func pageMenuController(_ pageMenuController: PageMenuController,
                              willScrollToPageAtIndex index: Int,
