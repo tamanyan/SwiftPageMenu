@@ -171,11 +171,13 @@ extension TabMenuView {
 
             if distance == 0 {
                 var distance = self.distance(from: currentCell, to: nextCell)
+
                 if self.collectionView.near(edge: .left, clearance: -distance) && distance < 0 {
                     distance = -(self.collectionView.contentOffset.x + self.collectionView.contentInset.left)
                 } else if self.collectionView.near(edge: .right, clearance: distance) && distance > 0 {
                     distance = self.collectionView.contentSize.width - (self.collectionView.contentOffset.x + self.collectionView.bounds.width - self.collectionView.contentInset.right)
                 }
+
                 self.distance = distance
             }
 
@@ -193,16 +195,26 @@ extension TabMenuView {
             if self.isInfinite {
                 self.collectionView.contentOffset.x = (collectionViewContentOffsetX ?? 0) + scroll
             } else {
+                let overflow = self.collectionView.frame.width < self.collectionView.contentSize.width
+
                 if progress >= 0 && progress < 1 {
                     self.cursorView.updatePosition(x: currentCell.frame.minX + progress * currentCell.frame.width)
-                    self.collectionView.contentOffset.x = (collectionViewContentOffsetX ?? 0) + scroll
+
+                    if overflow {
+                        self.collectionView.contentOffset.x = (collectionViewContentOffsetX ?? 0) + scroll
+                    }
                 } else if progress > -1 && progress < 0 {
                     self.cursorView.updatePosition(x: currentCell.frame.minX + nextCell.frame.width * progress)
-                    self.collectionView.contentOffset.x = (collectionViewContentOffsetX ?? 0) + scroll
+
+                    if overflow {
+                        self.collectionView.contentOffset.x = (collectionViewContentOffsetX ?? 0) + scroll
+                    }
                 }
             }
+
             self.cursorView.updateWidth(width: self.currentBarViewWidth + width)
         } else {
+
             // hidden visible decorations
             self.hiddenVisibleDecorations()
             // scoll to center of current cell
