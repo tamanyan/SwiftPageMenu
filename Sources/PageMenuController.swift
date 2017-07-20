@@ -9,6 +9,7 @@
 import UIKit
 
 open class PageMenuController: UIViewController {
+
     /// SwiftPageMenu configurations
     open let options: PageMenuOptions
 

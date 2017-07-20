@@ -9,6 +9,7 @@
 import UIKit
 
 class RootViewController: UITableViewController, UIGestureRecognizerDelegate {
+
     let titles: [String] = [
         "standard, roundRect",
         "standard, underline",

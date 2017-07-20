@@ -9,6 +9,7 @@
 import UIKit
 
 class ChildViewController: UITableViewController {
+
     var fruits = [String]()
 
     init(fruits: [String]) {

@@ -9,8 +9,11 @@
 import UIKit
 
 class RoundRectCursorView: UIView, TabMenuItemCursor {
+
     fileprivate var padding: CGFloat = 6
+
     fileprivate var currentBarViewWidthConstraint: NSLayoutConstraint?
+
     fileprivate var currentBarViewLeftConstraint: NSLayoutConstraint?
 
     override init(frame: CGRect) {

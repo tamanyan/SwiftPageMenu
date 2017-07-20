@@ -9,10 +9,12 @@
 import UIKit
 
 enum Edge {
+
     case left, right, top, bottom
 }
 
 extension UIScrollView {
+
     func near(edge: Edge, clearance: CGFloat = 0) -> Bool {
         switch edge {
         case .left:

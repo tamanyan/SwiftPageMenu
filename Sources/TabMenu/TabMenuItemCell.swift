@@ -9,6 +9,7 @@
 import UIKit
 
 class TabMenuItemCell: UICollectionViewCell {
+
     static var cellIdentifier: String {
         return "TabMenuItemCell"
     }

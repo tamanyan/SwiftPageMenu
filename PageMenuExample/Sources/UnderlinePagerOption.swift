@@ -10,6 +10,7 @@ import Foundation
 import SwiftPageMenu
 
 struct UnderlinePagerOption: PageMenuOptions {
+
     var isInfinite: Bool = false
 
     var menuItemSize: PageMenuItemSize {

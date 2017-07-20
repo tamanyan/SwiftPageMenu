@@ -9,6 +9,7 @@
 import UIKit
 
 class TabMenuView: UIView {
+
     var pageItemPressedBlock: ((_ index: Int, _ direction: EMPageViewControllerNavigationDirection) -> Void)?
 
     var pageTabItems: [String] = [] {
@@ -27,14 +28,23 @@ class TabMenuView: UIView {
     var layouted: Bool = false
 
     fileprivate var options: PageMenuOptions
+
     fileprivate var beforeIndex: Int = 0
+
     fileprivate var currentIndex: Int = 0
+
     fileprivate var pageTabItemsCount: Int = 0
+
     fileprivate var shouldScrollToItem: Bool = false
+
     fileprivate var pageTabItemsWidth: CGFloat = 0.0
+
     fileprivate var collectionViewContentOffsetX: CGFloat?
+
     fileprivate var currentBarViewWidth: CGFloat = 0.0
+
     fileprivate var cellForSize: TabMenuItemCell!
+
     fileprivate var distance: CGFloat = 0
 
     fileprivate var contentView: UIView = {
@@ -122,6 +132,7 @@ class TabMenuView: UIView {
 // MARK: - View
 
 extension TabMenuView {
+
     /**
      Called when you swipe in isInfinityTabPageViewController, moves the contentOffset of collectionView
 
@@ -130,6 +141,7 @@ extension TabMenuView {
      */
     func scrollCurrentBarView(_ index: Int, contentOffsetX: CGFloat, progress: CGFloat) {
         var nextIndex = isInfinite ? index + self.pageTabItemsCount : index
+
         if self.isInfinite && index == 0 && (self.beforeIndex - self.pageTabItemsCount) == self.pageTabItemsCount - 1 {
             // Calculate the index at the time of transition to the first item from the last item of pageTabItems
             nextIndex = pageTabItemsCount * 2
@@ -139,7 +151,6 @@ extension TabMenuView {
         }
 
         let currentIndexPath = IndexPath(item: self.currentIndex, section: 0)
-
         let nextIndexPath = IndexPath(item: nextIndex, section: 0)
 
         self.cursorView.isHidden = false
@@ -211,6 +222,7 @@ extension TabMenuView {
      */
     func scrollToHorizontalCenter() {
         let indexPath = IndexPath(item: self.currentIndex, section: 0)
+
         self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
         self.collectionViewContentOffsetX = self.collectionView.contentOffset.x
     }
@@ -243,6 +255,7 @@ extension TabMenuView {
         } else {
             self.currentIndex = index
         }
+
         let indexPath = IndexPath(item: index, section: 0)
         moveCurrentBarView(indexPath, animated: true, shouldScroll: true)
     }
@@ -258,6 +271,7 @@ extension TabMenuView {
         var targetIndexPath = indexPath
 
         self.distance = 0
+
         if shouldScroll {
             if self.isInfinite {
                 targetIndexPath = IndexPath(item: indexPath.item % self.pageTabItemsCount + self.pageTabItemsCount, section: 0)

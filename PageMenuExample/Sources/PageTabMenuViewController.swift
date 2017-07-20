@@ -10,7 +10,9 @@ import UIKit
 import SwiftPageMenu
 
 class PageTabMenuViewController: PageMenuController {
+
     let items: [[String]]
+
     let titles: [String]
 
     init(items: [[String]], titles: [String], options: PageMenuOptions? = nil) {

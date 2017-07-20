@@ -9,11 +9,14 @@
 import UIKit
 
 public enum PageMenuItemSize {
+
     case fixed(width: CGFloat, height: CGFloat)
+
     case sizeToFit(minWidth: CGFloat, height: CGFloat)
 }
 
 public extension PageMenuItemSize {
+
     var width: CGFloat {
         switch self {
         case let .fixed(width, _): return width
@@ -30,11 +33,14 @@ public extension PageMenuItemSize {
 }
 
 public enum PageMenuCursor {
+
     case underline(barColor: UIColor, height: CGFloat)
+
     case roundRect(rectColor: UIColor, cornerRadius: CGFloat, height: CGFloat)
 }
 
 extension PageMenuCursor {
+
     var height: CGFloat {
         switch self {
         case let .underline(_, height):
@@ -46,31 +52,48 @@ extension PageMenuCursor {
 }
 
 public enum TabMenuPosition {
+
     case top
+
     case bottom
+
     case custom
 }
 
 public enum PageMenuLayout {
+
     case layoutGuide
+
     case edge
 }
 
 public protocol PageMenuOptions {
+
     var isInfinite: Bool { get }
+
     var font: UIFont { get }
+
     var menuItemSize: PageMenuItemSize { get }
+
     var menuItemMargin: CGFloat { get }
+
     var menuTitleColor: UIColor { get }
+
     var menuTitleSelectedColor: UIColor { get }
+
     var menuCursor: PageMenuCursor { get }
+
     var tabMenuBackgroundColor: UIColor { get }
+
     var tabMenuPosition: TabMenuPosition { get }
+
     var tabMenuContentInset: UIEdgeInsets { get }
+
     var layout: PageMenuLayout { get }
 }
 
 extension PageMenuOptions {
+
     public var isInfinite: Bool {
         return false
     }
@@ -89,6 +112,7 @@ extension PageMenuOptions {
 }
 
 public struct DefaultPageMenuOption: PageMenuOptions {
+
     public var menuItemSize: PageMenuItemSize {
        return .sizeToFit(minWidth: 80, height: 30)
     }
