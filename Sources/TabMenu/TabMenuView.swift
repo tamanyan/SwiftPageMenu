@@ -217,8 +217,11 @@ extension TabMenuView {
 
             // hidden visible decorations
             self.hiddenVisibleDecorations()
-            // scoll to center of current cell
-            self.collectionView.scrollToItem(at: currentIndexPath, at: .centeredHorizontally, animated: false)
+
+            if let _ = self.collectionView.cellForItem(at: currentIndexPath) {
+                // scoll to center of current cell
+                self.collectionView.scrollToItem(at: currentIndexPath, at: .centeredHorizontally, animated: false)
+            }
         }
     }
 
