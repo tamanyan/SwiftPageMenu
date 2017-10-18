@@ -52,7 +52,15 @@ open class PageMenuController: UIViewController {
         let tabView = TabMenuView(options: self.options)
 
         tabView.pageItemPressedBlock = { [weak self] (index: Int, direction: EMPageViewControllerNavigationDirection) in
-            self?.displayControllerWithIndex(index, direction: direction, animated: true)
+            guard let `self` = self else { return }
+
+            self.displayControllerWithIndex(index,
+                                            direction: direction,
+                                            animated: true)
+
+            self.delegate?.pageMenuController?(self,
+                                               didSelectMenuItem: index,
+                                               direction: direction.toPageMenuNavigationDirection)
         }
 
         return tabView
@@ -153,24 +161,27 @@ open class PageMenuController: UIViewController {
         self.tabView.updateCollectionViewUserInteractionEnabled(false)
 
         let completion: ((Bool) -> Void) = { [weak self] _ in
-            guard let this = self else {
-                return
-            }
+            guard let `self` = self else { return }
 
-            this.beforeIndex = index
-            this.pageViewController.delegate = this
-            this.tabView.updateCollectionViewUserInteractionEnabled(true)
-            this.delegate?.pageMenuController?(this, didScrollToPageAtIndex: index, direction: direction.toPageMenuNavigationDirection)
+            self.beforeIndex = index
+            self.pageViewController.delegate = self
+            self.tabView.updateCollectionViewUserInteractionEnabled(true)
+            self.delegate?.pageMenuController?(self,
+                                               didScrollToPageAtIndex: index,
+                                               direction: direction.toPageMenuNavigationDirection)
         }
 
-        self.delegate?.pageMenuController?(self, willScrollToPageAtIndex: self.currentIndex ?? 0, direction: direction.toPageMenuNavigationDirection)
-        self.pageViewController.selectViewController(
-            viewControllers[index],
-            direction: direction,
-            animated: animated,
-            completion: completion)
+        self.delegate?.pageMenuController?(self,
+                                           willScrollToPageAtIndex: self.currentIndex ?? 0,
+                                           direction: direction.toPageMenuNavigationDirection)
+
+        self.pageViewController.selectViewController(viewControllers[index],
+                                                     direction: direction,
+                                                     animated: animated,
+                                                     completion: completion)
 
         guard self.isViewLoaded else { return }
+
         self.tabView.updateCurrentIndex(index, shouldScroll: true)
     }
 
@@ -214,11 +225,10 @@ open class PageMenuController: UIViewController {
             return
         }
 
-        self.pageViewController.selectViewController(
-            self.viewControllers[defaultIndex],
-            direction: .forward,
-            animated: false,
-            completion: nil)
+        self.pageViewController.selectViewController(self.viewControllers[defaultIndex],
+                                                     direction: .forward,
+                                                     animated: false,
+                                                     completion: nil)
     }
 
     fileprivate func setup() {
@@ -303,13 +313,21 @@ open class PageMenuController: UIViewController {
 // MARK:- EMPageViewControllerDelegate
 
 extension PageMenuController: EMPageViewControllerDelegate {
-    func em_pageViewController(_ pageViewController: EMPageViewController, willStartScrollingFrom startingViewController: UIViewController, destinationViewController: UIViewController, direction: EMPageViewControllerNavigationDirection) {
+    func em_pageViewController(_ pageViewController: EMPageViewController,
+                               willStartScrollingFrom startingViewController: UIViewController,
+                               destinationViewController: UIViewController, direction: EMPageViewControllerNavigationDirection) {
+
         // Order to prevent the the hit repeatedly during animation
         self.tabView.updateCollectionViewUserInteractionEnabled(false)
         self.delegate?.pageMenuController?(self, willScrollToPageAtIndex: self.currentIndex ?? 0, direction: direction.toPageMenuNavigationDirection)
     }
 
-    func em_pageViewController(_ pageViewController: EMPageViewController, didFinishScrollingFrom startingViewController: UIViewController?, destinationViewController: UIViewController, direction: EMPageViewControllerNavigationDirection, transitionSuccessful: Bool) {
+    func em_pageViewController(_ pageViewController: EMPageViewController,
+                               didFinishScrollingFrom startingViewController: UIViewController?,
+                               destinationViewController: UIViewController,
+                               direction: EMPageViewControllerNavigationDirection,
+                               transitionSuccessful: Bool) {
+
         if let currentIndex = self.currentIndex, currentIndex < self.tabItemCount {
             self.tabView.updateCurrentIndex(currentIndex, shouldScroll: true)
             self.beforeIndex = currentIndex
@@ -319,10 +337,13 @@ extension PageMenuController: EMPageViewControllerDelegate {
         self.tabView.updateCollectionViewUserInteractionEnabled(true)
     }
 
-    func em_pageViewController(_ pageViewController: EMPageViewController, isScrollingFrom startingViewController: UIViewController, destinationViewController: UIViewController?, direction: EMPageViewControllerNavigationDirection, progress: CGFloat) {
-        guard let beforeIndex = self.beforeIndex else {
-            return
-        }
+    func em_pageViewController(_ pageViewController: EMPageViewController,
+                               isScrollingFrom startingViewController: UIViewController,
+                               destinationViewController: UIViewController?,
+                               direction: EMPageViewControllerNavigationDirection,
+                               progress: CGFloat) {
+
+        guard let beforeIndex = self.beforeIndex else { return }
 
         var index: Int
 
@@ -348,9 +369,7 @@ extension PageMenuController: EMPageViewControllerDelegate {
 
 extension PageMenuController: EMPageViewControllerDataSource {
     private func nextViewController(_ viewController: UIViewController, isAfter: Bool) -> UIViewController? {
-        guard var index = viewControllers.index(of: viewController) else {
-            return nil
-        }
+        guard var index = viewControllers.index(of: viewController) else { return nil }
 
         if isAfter {
             index += 1

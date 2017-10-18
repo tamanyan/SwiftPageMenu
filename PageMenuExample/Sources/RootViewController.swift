@@ -70,6 +70,7 @@ class RootViewController: UITableViewController, UIGestureRecognizerDelegate {
                 items: items,
                 titles: tabTitles,
                 options: RoundRectPagerOption())
+
             pageViewController.navigationItem.title = self.titles[indexPath.row]
             self.navigationController?.pushViewController(pageViewController, animated: true)
         } else if indexPath.row == 1 {
@@ -77,6 +78,7 @@ class RootViewController: UITableViewController, UIGestureRecognizerDelegate {
                 items: items,
                 titles: tabTitles,
                 options: UnderlinePagerOption())
+
             pageViewController.navigationItem.title = self.titles[indexPath.row]
             self.navigationController?.pushViewController(pageViewController, animated: true)
         } else if indexPath.row == 2 {
@@ -84,6 +86,7 @@ class RootViewController: UITableViewController, UIGestureRecognizerDelegate {
                 items: items,
                 titles: tabTitles,
                 options: RoundRectPagerOption(isInfinite: true, tabMenuPosition: .custom))
+
             pageViewController.navigationItem.title = self.titles[indexPath.row]
             self.navigationController?.pushViewController(pageViewController, animated: true)
         } else if indexPath.row == 3 {
@@ -91,6 +94,7 @@ class RootViewController: UITableViewController, UIGestureRecognizerDelegate {
                 items: items,
                 titles: tabTitles,
                 options: RoundRectPagerOption(isInfinite: true))
+
             pageViewController.navigationItem.title = self.titles[indexPath.row]
             self.navigationController?.pushViewController(pageViewController, animated: true)
         } else if indexPath.row == 4 {
@@ -98,6 +102,7 @@ class RootViewController: UITableViewController, UIGestureRecognizerDelegate {
                 items: items,
                 titles: tabTitles,
                 options: UnderlinePagerOption(isInfinite: true))
+
             pageViewController.navigationItem.title = self.titles[indexPath.row]
             self.navigationController?.pushViewController(pageViewController, animated: true)
         } else if indexPath.row == 5 {

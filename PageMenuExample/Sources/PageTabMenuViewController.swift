@@ -73,4 +73,8 @@ extension PageTabMenuViewController: PageMenuControllerDelegate {
     func pageMenuController(_ pageMenuController: PageMenuController, scrollingProgress progress: CGFloat, direction: PageMenuNavigationDirection) {
         // The page view controller did complete scroll to a new page.
     }
+
+    func pageMenuController(_ pageMenuController: PageMenuController, didSelectMenuItem index: Int, direction: PageMenuNavigationDirection) {
+        print("didSelectMenuItem \(index)")
+    }
 }
