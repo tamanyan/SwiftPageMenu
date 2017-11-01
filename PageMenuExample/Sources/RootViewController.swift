@@ -1,6 +1,6 @@
 //
 //  RootViewController.swift
-//  PageMenuExample
+//  PagerExample
 //
 //  Created by Tamanyan on 3/7/29 H.
 //  Copyright © 29 Heisei Tamanyan. All rights reserved.
@@ -20,9 +20,16 @@ class RootViewController: UITableViewController, UIGestureRecognizerDelegate {
     ]
 
     let items: [[String]] = [
-        ["Apple", "Apricot", "Avocado", "Banana", "Blackberry"],
+        ["Apple", "Apricot", "Avocado", "Banana", "Blackberry",
+         "Apple", "Apricot", "Avocado", "Banana", "Blackberry",
+         "Apple", "Apricot", "Avocado", "Banana", "Blackberry",
+         "Apple", "Apricot", "Avocado", "Banana", "Blackberry",
+         "Apple", "Apricot", "Avocado", "Banana", "Blackberry",],
         ["Blueberry", "Cantaloupe", "Cherry", "Cherimoya", "Clementine", "Coconut", "Cranberry", "Cucumber",
-         "Custard apple", "Damson", "Date", "Dragonfruit", "Durian", "Elderberry", "Feijoa"],
+         "Custard apple", "Damson", "Date", "Dragonfruit", "Durian", "Elderberry", "Feijoa",
+         "Custard apple", "Damson", "Date", "Dragonfruit", "Durian", "Elderberry", "Feijoa",
+         "Custard apple", "Damson", "Date", "Dragonfruit", "Durian", "Elderberry", "Feijoa",
+         "Custard apple", "Damson", "Date", "Dragonfruit", "Durian", "Elderberry", "Feijoa",],
         ["Fig", "Grape", "Grapefruit", "Guava", "Udara", "Honeyberry", "Huckleberry", "Jabuticaba"],
         ["Jackfruit", "Juniper berry", "Kiwi fruit", "Lemon", "Lime", "Lychee", "Mandarine",],
         ["Mango", "Marionberry"],

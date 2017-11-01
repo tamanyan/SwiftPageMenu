@@ -142,7 +142,7 @@ class EMPageViewController: UIViewController, UIScrollViewDelegate {
     /// The underlying `UIScrollView` responsible for scrolling page views.
     /// - important: Properties should be set with caution to prevent unexpected behavior.
     open private(set) lazy var scrollView: UIScrollView = {
-        let scrollView = SimultaneousGestureScrollView()
+        let scrollView = UIScrollView()
 
         scrollView.isPagingEnabled = true
         scrollView.scrollsToTop = false
@@ -153,6 +153,10 @@ class EMPageViewController: UIViewController, UIScrollViewDelegate {
         scrollView.translatesAutoresizingMaskIntoConstraints = true
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator = false
+
+        let panBlockGestureRecognizer = PanBlockGestureRecognizer(in: self.view)
+        scrollView.addGestureRecognizer(panBlockGestureRecognizer)
+        scrollView.panGestureRecognizer.require(toFail: panBlockGestureRecognizer)
 
         return scrollView
     }()

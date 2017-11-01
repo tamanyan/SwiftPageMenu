@@ -21,7 +21,7 @@
 		23C1D2071E73059500A4A491 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C1D1FB1E73059500A4A491 /* UIColor+Extension.swift */; };
 		23C1D2081E73059500A4A491 /* UIScrollView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C1D1FC1E73059500A4A491 /* UIScrollView+Extensions.swift */; };
 		23C1D26B1E73175100A4A491 /* PageMenuNavigationDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C1D26A1E73175100A4A491 /* PageMenuNavigationDirection.swift */; };
-		AB39A18B1FA98F2C005E8C2C /* SimultaneousGestureScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB39A18A1FA98F2C005E8C2C /* SimultaneousGestureScrollView.swift */; };
+		AB39A18D1FA99B91005E8C2C /* PanBlockGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB39A18C1FA99B91005E8C2C /* PanBlockGestureRecognizer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,7 +41,7 @@
 		23C1D1FB1E73059500A4A491 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		23C1D1FC1E73059500A4A491 /* UIScrollView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extensions.swift"; sourceTree = "<group>"; };
 		23C1D26A1E73175100A4A491 /* PageMenuNavigationDirection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageMenuNavigationDirection.swift; sourceTree = "<group>"; };
-		AB39A18A1FA98F2C005E8C2C /* SimultaneousGestureScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimultaneousGestureScrollView.swift; sourceTree = "<group>"; };
+		AB39A18C1FA99B91005E8C2C /* PanBlockGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanBlockGestureRecognizer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,7 +121,7 @@
 				23C1D1FA1E73059500A4A491 /* EMPageViewController.swift */,
 				23C1D1FB1E73059500A4A491 /* UIColor+Extension.swift */,
 				23C1D1FC1E73059500A4A491 /* UIScrollView+Extensions.swift */,
-				AB39A18A1FA98F2C005E8C2C /* SimultaneousGestureScrollView.swift */,
+				AB39A18C1FA99B91005E8C2C /* PanBlockGestureRecognizer.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -214,8 +214,8 @@
 				23C1D2071E73059500A4A491 /* UIColor+Extension.swift in Sources */,
 				23C1D2001E73059500A4A491 /* PageMenuControllerDelegate.swift in Sources */,
 				23C1D2021E73059500A4A491 /* TabMenuItemCell.swift in Sources */,
-				AB39A18B1FA98F2C005E8C2C /* SimultaneousGestureScrollView.swift in Sources */,
 				23C1D2041E73059500A4A491 /* TabMenuView.swift in Sources */,
+				AB39A18D1FA99B91005E8C2C /* PanBlockGestureRecognizer.swift in Sources */,
 				23C1D1FD1E73059500A4A491 /* PageMenuOptions.swift in Sources */,
 				23C1D1FF1E73059500A4A491 /* PageMenuControllerDataSource.swift in Sources */,
 				23C1D1FE1E73059500A4A491 /* PageMenuController.swift in Sources */,
