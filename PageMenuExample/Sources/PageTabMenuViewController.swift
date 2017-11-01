@@ -63,11 +63,6 @@ extension PageTabMenuViewController: PageMenuControllerDelegate {
     func pageMenuController(_ pageMenuController: PageMenuController, didScrollToPageAtIndex index: Int, direction: PageMenuNavigationDirection) {
         // The page view controller will begin scrolling to a new page.
         print("didScrollToPageAtIndex index:\(index)")
-        self.viewControllers.forEach {
-            if let vc = $0 as? ChildViewController {
-                vc.tableView.isScrollEnabled = true
-            }
-        }
     }
 
     func pageMenuController(_ pageMenuController: PageMenuController, willScrollToPageAtIndex index: Int, direction: PageMenuNavigationDirection) {
@@ -78,11 +73,6 @@ extension PageTabMenuViewController: PageMenuControllerDelegate {
     func pageMenuController(_ pageMenuController: PageMenuController, scrollingProgress progress: CGFloat, direction: PageMenuNavigationDirection) {
         // The page view controller did complete scroll to a new page.
         print("scrollingProgress progress: \(progress)")
-        self.viewControllers.forEach {
-            if let vc = $0 as? ChildViewController {
-                vc.tableView.isScrollEnabled = false
-            }
-        }
     }
 
     func pageMenuController(_ pageMenuController: PageMenuController, didSelectMenuItem index: Int, direction: PageMenuNavigationDirection) {

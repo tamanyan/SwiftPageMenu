@@ -69,4 +69,3 @@ class ChildViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
-

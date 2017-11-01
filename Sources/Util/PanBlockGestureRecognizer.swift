@@ -37,7 +37,6 @@ class PanBlockGestureRecognizer: UIPanGestureRecognizer {
     func performAction(sender: UIGestureRecognizer) {
         guard let panGesture = sender as? UIPanGestureRecognizer else { return }
         let state = panGesture.state
-        // 対象ビューからみた座標
         let panLocation = panGesture.location(in: self.inView)
         let permissionVertical: CGFloat = 10
         let swipeStroke: CGFloat = 10
