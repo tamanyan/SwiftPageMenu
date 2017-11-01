@@ -142,7 +142,8 @@ class EMPageViewController: UIViewController, UIScrollViewDelegate {
     /// The underlying `UIScrollView` responsible for scrolling page views.
     /// - important: Properties should be set with caution to prevent unexpected behavior.
     open private(set) lazy var scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
+        let scrollView = SimultaneousGestureScrollView()
+
         scrollView.isPagingEnabled = true
         scrollView.scrollsToTop = false
         scrollView.autoresizingMask = [.flexibleTopMargin, .flexibleRightMargin, .flexibleBottomMargin, .flexibleLeftMargin]
@@ -152,6 +153,7 @@ class EMPageViewController: UIViewController, UIScrollViewDelegate {
         scrollView.translatesAutoresizingMaskIntoConstraints = true
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator = false
+
         return scrollView
     }()
 

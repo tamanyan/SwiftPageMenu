@@ -1,6 +1,6 @@
 //
 //  RootViewController.swift
-//  PagerExample
+//  PageMenuExample
 //
 //  Created by Tamanyan on 3/7/29 H.
 //  Copyright © 29 Heisei Tamanyan. All rights reserved.
