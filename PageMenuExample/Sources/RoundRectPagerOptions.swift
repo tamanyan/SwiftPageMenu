@@ -1,6 +1,6 @@
 //
 //  RoundRectPageMenuOptions.swift
-//  PagerExample
+//  PageMenuExample
 //
 //  Created by Tamanyan on 3/10/29 H.
 //  Copyright © 29 Heisei Tamanyan. All rights reserved.

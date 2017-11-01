@@ -1,6 +1,6 @@
 //
 //  UIColor+Extension.swift
-//  SwiftPager
+//  SwiftPageMenu
 //
 //  Created by Tamanyan on 3/10/17.
 //  Copyright © 2017 Tamanyan. All rights reserved.

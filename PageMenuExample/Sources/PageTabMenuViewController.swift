@@ -1,6 +1,6 @@
 //
 //  PageTabMenuViewController.swift
-//  PagerExample
+//  PageMenuExample
 //
 //  Created by Tamanyan on 3/7/17.
 //  Copyright © 2017 Tamanyan. All rights reserved.
@@ -72,9 +72,10 @@ extension PageTabMenuViewController: PageMenuControllerDelegate {
 
     func pageMenuController(_ pageMenuController: PageMenuController, scrollingProgress progress: CGFloat, direction: PageMenuNavigationDirection) {
         // The page view controller did complete scroll to a new page.
+        print("scrollingProgress progress: \(progress)")
     }
 
     func pageMenuController(_ pageMenuController: PageMenuController, didSelectMenuItem index: Int, direction: PageMenuNavigationDirection) {
-        print("didSelectMenuItem \(index)")
+        print("didSelectMenuItem index: \(index)")
     }
 }
