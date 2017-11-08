@@ -53,10 +53,10 @@ class PanBlockGestureRecognizer: UIPanGestureRecognizer {
 
             if absY < permissionVertical && absX > swipeStroke {
                 panGesture.setValue(UIGestureRecognizerState.cancelled.rawValue, forKey: "state")
-                self.isEnded = true
+                // self.isEnded = true
             } else if absY > permissionVertical {
                 self.isEnded = true
-                panGesture.setValue(UIGestureRecognizerState.ended.rawValue, forKey: "state")
+                // panGesture.setValue(UIGestureRecognizerState.ended.rawValue, forKey: "state")
             }
         }
     }
