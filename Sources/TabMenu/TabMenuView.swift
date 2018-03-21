@@ -10,8 +10,10 @@ import UIKit
 
 class TabMenuView: UIView {
 
+    /// This callback function is called when tab menu item is selected
     var pageItemPressedBlock: ((_ index: Int, _ direction: EMPageViewControllerNavigationDirection) -> Void)?
 
+    /// tab menu titles
     var pageTabItems: [String] = [] {
         didSet {
             self.pageTabItemsCount = self.pageTabItems.count
@@ -21,6 +23,7 @@ class TabMenuView: UIView {
         }
     }
 
+    /// Get whether infinite mode or not
     var isInfinite: Bool {
         return self.options.isInfinite
     }
@@ -225,6 +228,12 @@ extension TabMenuView {
         }
     }
 
+    /**
+     Helper function that calculates distance between "from cell" and "to cell"
+
+     - parameter from: base cell that you would like to calculate distance
+     - parameter to: end cell that you would like to calculate distance
+     */
     fileprivate func distance(from: UICollectionViewCell, to: UICollectionViewCell) -> CGFloat {
         let distanceToCenter = collectionView.bounds.midX - from.frame.midX
         let distanceBetweenCells = to.frame.midX - from.frame.midX
@@ -331,7 +340,7 @@ extension TabMenuView {
     /**
      Touch event control of collectionView
 
-     - parameter userInteractionEnabled: collectionViewに渡すuserInteractionEnabled
+     - parameter userInteractionEnabled: UserInteractionEnabled
      */
     func updateCollectionViewUserInteractionEnabled(_ userInteractionEnabled: Bool) {
         collectionView.isUserInteractionEnabled = userInteractionEnabled
@@ -365,6 +374,7 @@ extension TabMenuView {
 // MARK: - UICollectionViewDataSource
 
 extension TabMenuView: UICollectionViewDataSource {
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.isInfinite ? self.pageTabItemsCount * 3 : self.pageTabItemsCount
     }

@@ -28,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navController = UINavigationController(rootViewController: RootViewController())
         self.window?.rootViewController = navController
         self.window?.makeKeyAndVisible()
+
         return true
     }
 

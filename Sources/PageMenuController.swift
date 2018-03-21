@@ -29,6 +29,7 @@ open class PageMenuController: UIViewController {
     /// The tab menu titles that are displayed in the page view controller.
     open internal(set) var menuTitles = [String]()
 
+    /// Current page index
     var currentIndex: Int? {
         guard let viewController = self.pageViewController.selectedViewController else {
             return nil
@@ -48,15 +49,16 @@ open class PageMenuController: UIViewController {
         return vc
     }()
 
+    /// TabView
     fileprivate(set) lazy var tabView: TabMenuView = {
         let tabView = TabMenuView(options: self.options)
 
         tabView.pageItemPressedBlock = { [weak self] (index: Int, direction: EMPageViewControllerNavigationDirection) in
             guard let `self` = self else { return }
 
-            self.displayControllerWithIndex(index,
-                                            direction: direction,
-                                            animated: true)
+            self.displayController(with: index,
+                                   direction: direction,
+                                   animated: true)
 
             self.delegate?.pageMenuController?(self,
                                                didSelectMenuItem: index,
@@ -83,6 +85,7 @@ open class PageMenuController: UIViewController {
         return self.viewControllers.count
     }
 
+    /// The number of tab items
     fileprivate var tabItemCount: Int {
         return self.menuTitles.count
     }
@@ -132,6 +135,9 @@ open class PageMenuController: UIViewController {
 
     /**
      Transitions to the next page.
+
+     - parameter animated: A Boolean whether or not to animate the transition
+     - parameter completion: A block that's called after the transition is finished. The block parameter `transitionSuccessful` is `true` if the transition to the selected view controller was completed successfully.
      */
     public func scrollToNext(animated: Bool, completion: ((Bool) -> Void)?) {
         self.pageViewController.scrollForward(animated: animated, completion: completion)
@@ -139,14 +145,22 @@ open class PageMenuController: UIViewController {
 
     /**
      Transitions to the previous page.
+
+     - parameter animated: A Boolean whether or not to animate the transition
+     - parameter completion: A block that's called after the transition is finished. The block parameter `transitionSuccessful` is `true` if the transition to the selected view controller was completed successfully.
      */
     public func scrollToPrevious(animated: Bool, completion: ((Bool) -> Void)?) {
         self.pageViewController.scrollReverse(animated: animated, completion: completion)
     }
 
-    // MARK: - Public Interface
+    /**
+     Show page controller with index
 
-    fileprivate func displayControllerWithIndex(_ index: Int, direction: EMPageViewControllerNavigationDirection, animated: Bool) {
+     - parameter index: Index that you want to show
+     - parameter direction: The direction of the navigation and animation
+     - parameter animated: A Boolean whether or not to animate the transition
+     */
+    fileprivate func displayController(with index: Int, direction: EMPageViewControllerNavigationDirection, animated: Bool) {
         if self.pageViewController.scrolling {
             return
         }
@@ -185,8 +199,11 @@ open class PageMenuController: UIViewController {
         self.tabView.updateCurrentIndex(index, shouldScroll: true)
     }
 
-    // MARK: - View
+    /**
+     Reload all pages
 
+     - parameter reloadViewControllers: A Boolean whether or not to reload each page view controller
+     */
     fileprivate func reloadPages(reloadViewControllers: Bool) {
         guard let defaultIndex = self.dataSource?.defaultPageIndex(forPageMenuController: self) else {
             self.tabView.pageTabItems = []
@@ -232,7 +249,6 @@ open class PageMenuController: UIViewController {
     }
 
     fileprivate func setup() {
-
         self.addChildViewController(self.pageViewController)
         self.view.addSubview(self.pageViewController.view)
 

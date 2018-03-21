@@ -9,6 +9,7 @@
 import Foundation
 
 extension UIColor {
+
     fileprivate func components() -> (CGFloat, CGFloat, CGFloat, CGFloat) {
         guard let c = cgColor.components else { return (0, 0, 0, 1) }
 
