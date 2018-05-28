@@ -80,7 +80,7 @@ class TabMenuItemCell: UICollectionViewCell {
     }
 
     override func sizeThatFits(_ size: CGSize) -> CGSize {
-        if self.itemLabel.text?.characters.count == 0 {
+        if self.itemLabel.text?.count == 0 {
             return .zero
         }
 
