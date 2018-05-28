@@ -23,7 +23,7 @@ This framework is reference by [msaps/Pageboy](https://github.com/msaps/Pageboy)
 
 ## Requirements
 
-- iOS 9.0+
+- iOS 10.0+
 - Swift 4+
 
 ## How to use
