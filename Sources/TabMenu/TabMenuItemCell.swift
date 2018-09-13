@@ -44,11 +44,15 @@ class TabMenuItemCell: UICollectionViewCell {
                     underlineView.backgroundColor = barColor
                     underlineView.updateWidth(width: self.frame.width)
                     self.decorationView = underlineView
-                case let .roundRect(rectColor, cornerRadius, _):
+                case let .roundRect(rectColor, cornerRadius, _, borderWidth, borderColor):
                     let rectView = RoundRectCursorView(frame: .zero)
                     rectView.setup(parent: self, isInfinite: true, options: options)
                     rectView.backgroundColor = rectColor
                     rectView.layer.cornerRadius = cornerRadius
+                    if let borderWidth = borderWidth, let borderColor = borderColor {
+                        rectView.layer.borderWidth = borderWidth
+                        rectView.layer.borderColor = borderColor.cgColor
+                    }
                     rectView.updateWidth(width: self.frame.width)
                     self.decorationView = rectView
                 }
