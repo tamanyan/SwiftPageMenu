@@ -107,7 +107,7 @@ extension PageMenuOptions {
     }
 
     public var layout: PageMenuLayout {
-        return .edge
+        return .layoutGuide
     }
 }
 

@@ -28,7 +28,11 @@ class PageTabMenuViewController: PageMenuController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.edgesForExtendedLayout = []
-        self.view.backgroundColor = .white
+        if options.layout == .layoutGuide && options.tabMenuPosition == .bottom {
+            self.view.backgroundColor = Theme.mainColor
+        } else {
+            self.view.backgroundColor = .white
+        }
 
         if self.options.tabMenuPosition == .custom {
             self.view.addSubview(self.tabMenuView)
