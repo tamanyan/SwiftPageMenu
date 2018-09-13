@@ -45,7 +45,7 @@ open class PageMenuController: UIViewController {
         vc.delegate = self
         vc.scrollView.backgroundColor = .clear
         if #available(iOS 11.0, *) {
-            vc.scrollView.contentInsetAdjustmentBehavior = .automatic
+            vc.scrollView.contentInsetAdjustmentBehavior = .never
         } else {
             vc.automaticallyAdjustsScrollViewInsets = false
         }
