@@ -28,7 +28,7 @@ struct RoundRectPagerOption: PageMenuOptions {
     }
 
     var menuCursor: PageMenuCursor {
-        return .roundRect(rectColor: .white, cornerRadius: 10, height: 22)
+        return .roundRect(rectColor: .white, cornerRadius: 10, height: 22, borderWidth: nil, borderColor: nil)
     }
 
     var font: UIFont {
