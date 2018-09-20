@@ -112,7 +112,7 @@ class TabMenuView: UIView {
             }
             underlineView.backgroundColor = barColor
             self.cursorView = underlineView
-        case let .roundRect(rectColor, cornerRadius, _):
+        case let .roundRect(rectColor, cornerRadius, _, borderWidth, borderColor):
             let rectView = RoundRectCursorView(frame: .zero)
             if self.isInfinite {
                 rectView.setup(parent: self.contentView, isInfinite: true, options: self.options)
@@ -121,6 +121,10 @@ class TabMenuView: UIView {
             }
             rectView.backgroundColor = rectColor
             rectView.layer.cornerRadius = cornerRadius
+            if let borderWidth = borderWidth, let borderColor = borderColor {
+                rectView.layer.borderWidth = borderWidth
+                rectView.layer.borderColor = borderColor.cgColor
+            }
             self.cursorView = rectView
         }
         self.cursorView.isHidden = true

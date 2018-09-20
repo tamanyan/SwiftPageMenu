@@ -24,6 +24,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let navController = UINavigationController(rootViewController: RootViewController())
+        if #available(iOS 11.0, *) {
+            navController.navigationBar.prefersLargeTitles = true
+            navController.navigationBar.largeTitleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        }
         self.window?.rootViewController = navController
         self.window?.makeKeyAndVisible()
 

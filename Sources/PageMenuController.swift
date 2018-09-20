@@ -44,8 +44,11 @@ open class PageMenuController: UIViewController {
         vc.dataSource = self
         vc.delegate = self
         vc.scrollView.backgroundColor = .clear
-        vc.automaticallyAdjustsScrollViewInsets = false
-
+        if #available(iOS 11.0, *) {
+            vc.scrollView.contentInsetAdjustmentBehavior = .never
+        } else {
+            vc.automaticallyAdjustsScrollViewInsets = false
+        }
         return vc
     }()
 
@@ -272,8 +275,13 @@ open class PageMenuController: UIViewController {
             // use layout guide or edge
             switch self.options.layout {
             case .layoutGuide:
-                self.pageViewController.view.bottomAnchor.constraint(equalTo: self.bottomLayoutGuide.topAnchor).isActive = true
-                self.tabView.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor).isActive = true
+                if #available(iOS 11.0, *) {
+                    self.pageViewController.view.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+                    self.tabView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
+                } else {
+                    self.pageViewController.view.bottomAnchor.constraint(equalTo: self.bottomLayoutGuide.topAnchor).isActive = true
+                    self.tabView.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor).isActive = true
+                }
             case .edge:
                 self.pageViewController.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
                 self.tabView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
@@ -297,8 +305,13 @@ open class PageMenuController: UIViewController {
             // use layout guide or edge
             switch self.options.layout {
             case .layoutGuide:
-                self.pageViewController.view.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor).isActive = true
-                self.tabView.bottomAnchor.constraint(equalTo: self.bottomLayoutGuide.topAnchor).isActive = true
+                if #available(iOS 11.0, *) {
+                    self.pageViewController.view.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
+                    self.tabView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+                } else {
+                    self.pageViewController.view.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor).isActive = true
+                    self.tabView.bottomAnchor.constraint(equalTo: self.bottomLayoutGuide.topAnchor).isActive = true
+                }
             case .edge:
                 self.pageViewController.view.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
                 self.tabView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
@@ -313,8 +326,13 @@ open class PageMenuController: UIViewController {
             // use layout guide or edge
             switch self.options.layout {
             case .layoutGuide:
-                self.pageViewController.view.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor).isActive = true
-                self.pageViewController.view.bottomAnchor.constraint(equalTo: self.bottomLayoutGuide.topAnchor).isActive = true
+                if #available(iOS 11.0, *) {
+                    self.pageViewController.view.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
+                    self.pageViewController.view.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+                } else {
+                    self.pageViewController.view.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor).isActive = true
+                    self.pageViewController.view.bottomAnchor.constraint(equalTo: self.bottomLayoutGuide.topAnchor).isActive = true
+                }
             case .edge:
                 self.pageViewController.view.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
                 self.pageViewController.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true

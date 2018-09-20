@@ -36,7 +36,7 @@ public enum PageMenuCursor {
 
     case underline(barColor: UIColor, height: CGFloat)
 
-    case roundRect(rectColor: UIColor, cornerRadius: CGFloat, height: CGFloat)
+    case roundRect(rectColor: UIColor, cornerRadius: CGFloat, height: CGFloat, borderWidth: CGFloat?, borderColor: UIColor?)
 }
 
 extension PageMenuCursor {
@@ -45,7 +45,7 @@ extension PageMenuCursor {
         switch self {
         case let .underline(_, height):
             return height
-        case let .roundRect(_, _, height):
+        case let .roundRect(_, _, height, _, _):
             return height
         }
     }
@@ -107,7 +107,7 @@ extension PageMenuOptions {
     }
 
     public var layout: PageMenuLayout {
-        return .edge
+        return .layoutGuide
     }
 }
 
@@ -130,7 +130,7 @@ public struct DefaultPageMenuOption: PageMenuOptions {
     }
 
     public var menuCursor: PageMenuCursor {
-        return .roundRect(rectColor: UIColor(red: 3/255, green: 125/255, blue: 233/255, alpha: 1), cornerRadius: 10, height: 22)
+        return .roundRect(rectColor: UIColor(red: 3/255, green: 125/255, blue: 233/255, alpha: 1), cornerRadius: 10, height: 22, borderWidth: nil, borderColor: nil)
     }
 
     public var font: UIFont {
