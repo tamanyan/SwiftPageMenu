@@ -8,7 +8,7 @@ SwiftPageMenu
 ![2](https://raw.githubusercontent.com/tamanyan/SwiftPageMenu/master/screen_captures/2.gif)
 ![3](https://raw.githubusercontent.com/tamanyan/SwiftPageMenu/master/screen_captures/3.gif)
 ![4](https://raw.githubusercontent.com/tamanyan/SwiftPageMenu/master/screen_captures/4.gif)
-t
+
 
 Customizable Page Menu ViewController in Swift
 
