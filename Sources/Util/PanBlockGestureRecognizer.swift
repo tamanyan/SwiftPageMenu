@@ -35,7 +35,7 @@ class PanBlockGestureRecognizer: UIPanGestureRecognizer {
         self.delegate = self.panBlockGestureRecognizerDelegate
     }
 
-    func performAction(sender: UIGestureRecognizer) {
+    @objc func performAction(sender: UIGestureRecognizer) {
         guard let panGesture = sender as? UIPanGestureRecognizer else { return }
         let state = panGesture.state
         let panLocation = panGesture.location(in: self.inView)
@@ -53,7 +53,7 @@ class PanBlockGestureRecognizer: UIPanGestureRecognizer {
             let absY = abs(moveY)
 
             if absY < permissionVertical && absX > swipeStroke {
-                panGesture.setValue(UIGestureRecognizerState.cancelled.rawValue, forKey: "state")
+                panGesture.setValue(UIGestureRecognizer.State.cancelled.rawValue, forKey: "state")
                 // self.isEnded = true
             } else if absY > permissionVertical {
                 self.isEnded = true

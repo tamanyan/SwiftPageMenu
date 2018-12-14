@@ -459,14 +459,14 @@ class EMPageViewController: UIViewController, UIScrollViewDelegate {
 
     private func addChildIfNeeded(_ viewController: UIViewController) {
         self.scrollView.addSubview(viewController.view)
-        self.addChildViewController(viewController)
-        viewController.didMove(toParentViewController: self)
+        self.addChild(viewController)
+        viewController.didMove(toParent: self)
     }
 
     private func removeChildIfNeeded(_ viewController: UIViewController?) {
         viewController?.view.removeFromSuperview()
-        viewController?.didMove(toParentViewController: nil)
-        viewController?.removeFromParentViewController()
+        viewController?.didMove(toParent: nil)
+        viewController?.removeFromParent()
     }
 
     private func layoutViews() {
@@ -488,9 +488,9 @@ class EMPageViewController: UIViewController, UIScrollViewDelegate {
         self.adjustingContentOffset = true
         self.scrollView.contentOffset = CGPoint(x: self.isOrientationHorizontal ? viewWidth : 0, y: self.isOrientationHorizontal ? 0 : viewHeight)
         if self.isOrientationHorizontal {
-            self.scrollView.contentInset = UIEdgeInsetsMake(0, beforeInset, 0, afterInset)
+            self.scrollView.contentInset = UIEdgeInsets.init(top: 0, left: beforeInset, bottom: 0, right: afterInset)
         } else {
-            self.scrollView.contentInset = UIEdgeInsetsMake(beforeInset, 0, afterInset, 0)
+            self.scrollView.contentInset = UIEdgeInsets.init(top: beforeInset, left: 0, bottom: afterInset, right: 0)
         }
         self.adjustingContentOffset = false
 
@@ -639,14 +639,14 @@ class EMPageViewController: UIViewController, UIScrollViewDelegate {
 
         if self.isOrientationHorizontal {
             if  (self.beforeViewController != nil && self.afterViewController != nil) || // It isn't at the beginning or end of the page collection
-                (self.afterViewController != nil && self.beforeViewController == nil && scrollView.contentOffset.x > fabs(scrollView.contentInset.left)) || // If it's at the beginning of the collection, the decelleration can't be triggered by scrolling away from, than torwards the inset
-                (self.beforeViewController != nil && self.afterViewController == nil && scrollView.contentOffset.x < fabs(scrollView.contentInset.right)) { // Same as the last condition, but at the end of the collection
+                (self.afterViewController != nil && self.beforeViewController == nil && scrollView.contentOffset.x > abs(scrollView.contentInset.left)) || // If it's at the beginning of the collection, the decelleration can't be triggered by scrolling away from, than torwards the inset
+                (self.beforeViewController != nil && self.afterViewController == nil && scrollView.contentOffset.x < abs(scrollView.contentInset.right)) { // Same as the last condition, but at the end of the collection
                 scrollView.setContentOffset(CGPoint(x: self.view.bounds.width, y: 0), animated: true)
             }
         } else {
             if  (self.beforeViewController != nil && self.afterViewController != nil) || // It isn't at the beginning or end of the page collection
-                (self.afterViewController != nil && self.beforeViewController == nil && scrollView.contentOffset.y > fabs(scrollView.contentInset.top)) || // If it's at the beginning of the collection, the decelleration can't be triggered by scrolling away from, than torwards the inset
-                (self.beforeViewController != nil && self.afterViewController == nil && scrollView.contentOffset.y < fabs(scrollView.contentInset.bottom)) { // Same as the last condition, but at the end of the collection
+                (self.afterViewController != nil && self.beforeViewController == nil && scrollView.contentOffset.y > abs(scrollView.contentInset.top)) || // If it's at the beginning of the collection, the decelleration can't be triggered by scrolling away from, than torwards the inset
+                (self.beforeViewController != nil && self.afterViewController == nil && scrollView.contentOffset.y < abs(scrollView.contentInset.bottom)) { // Same as the last condition, but at the end of the collection
                 scrollView.setContentOffset(CGPoint(x: 0, y: self.view.bounds.height), animated: true)
             }
         }

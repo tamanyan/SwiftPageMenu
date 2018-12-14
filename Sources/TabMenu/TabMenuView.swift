@@ -196,8 +196,8 @@ extension TabMenuView {
                 currentCell.unHighlightTitle(progress: -1 * progress)
             }
 
-            let width = fabs(progress) * (nextCell.frame.width - currentCell.frame.width)
-            let scroll = fabs(progress) * self.distance
+            let width = abs(progress) * (nextCell.frame.width - currentCell.frame.width)
+            let scroll = abs(progress) * self.distance
 
             if self.isInfinite {
                 self.collectionView.contentOffset.x = (collectionViewContentOffsetX ?? 0) + scroll
@@ -356,7 +356,7 @@ extension TabMenuView {
     fileprivate func deselectVisibleCells() {
         self.collectionView
             .visibleCells
-            .flatMap { $0 as? TabMenuItemCell }
+            .compactMap { $0 as? TabMenuItemCell }
             .forEach {
                 $0.unHighlightTitle()
                 $0.isDecorationHidden = true
@@ -369,7 +369,7 @@ extension TabMenuView {
     fileprivate func hiddenVisibleDecorations() {
         self.collectionView
             .visibleCells
-            .flatMap { $0 as? TabMenuItemCell }
+            .compactMap { $0 as? TabMenuItemCell }
             .forEach { $0.isDecorationHidden = true }
     }
 }

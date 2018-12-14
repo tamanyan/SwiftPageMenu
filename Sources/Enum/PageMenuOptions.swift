@@ -60,6 +60,11 @@ public enum TabMenuPosition {
     case custom
 }
 
+/**
+ The page menu layout.
+ If you use layoutGuide, page menu layout follow UILayoutGuide.
+ If you use edge, page menu layout follow edge (bottomAnchor, topAnchor)
+ */
 public enum PageMenuLayout {
 
     case layoutGuide
