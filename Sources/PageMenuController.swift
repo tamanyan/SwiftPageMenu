@@ -11,7 +11,7 @@ import UIKit
 open class PageMenuController: UIViewController {
 
     /// SwiftPageMenu configurations
-    open let options: PageMenuOptions
+    public let options: PageMenuOptions
 
     /// PageMenuController data source.
     open weak var dataSource: PageMenuControllerDataSource? {
@@ -49,6 +49,7 @@ open class PageMenuController: UIViewController {
         } else {
             vc.automaticallyAdjustsScrollViewInsets = false
         }
+
         return vc
     }()
 
@@ -252,7 +253,7 @@ open class PageMenuController: UIViewController {
     }
 
     fileprivate func setup() {
-        self.addChildViewController(self.pageViewController)
+        self.addChild(self.pageViewController)
         self.view.addSubview(self.pageViewController.view)
 
         switch self.options.tabMenuPosition {
@@ -276,10 +277,10 @@ open class PageMenuController: UIViewController {
             switch self.options.layout {
             case .layoutGuide:
                 if #available(iOS 11.0, *) {
-                    self.pageViewController.view.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+                    self.pageViewController.view.bottomAnchor.constraint(equalTo: self.bottomLayoutGuide.bottomAnchor).isActive = true
                     self.tabView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
                 } else {
-                    self.pageViewController.view.bottomAnchor.constraint(equalTo: self.bottomLayoutGuide.topAnchor).isActive = true
+                    self.pageViewController.view.bottomAnchor.constraint(equalTo: self.bottomLayoutGuide.bottomAnchor).isActive = true
                     self.tabView.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor).isActive = true
                 }
             case .edge:
@@ -339,8 +340,8 @@ open class PageMenuController: UIViewController {
             }
         }
 
-        self.view.sendSubview(toBack: self.pageViewController.view)
-        self.pageViewController.didMove(toParentViewController: self)
+        self.view.sendSubviewToBack(self.pageViewController.view)
+        self.pageViewController.didMove(toParent: self)
     }
 }
 

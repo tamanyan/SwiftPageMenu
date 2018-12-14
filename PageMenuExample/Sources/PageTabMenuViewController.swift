@@ -27,7 +27,9 @@ class PageTabMenuViewController: PageMenuController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         self.edgesForExtendedLayout = []
+
         if options.layout == .layoutGuide && options.tabMenuPosition == .bottom {
             self.view.backgroundColor = Theme.mainColor
         } else {
@@ -41,7 +43,11 @@ class PageTabMenuViewController: PageMenuController {
             self.tabMenuView.heightAnchor.constraint(equalToConstant: self.options.menuItemSize.height).isActive = true
             self.tabMenuView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
             self.tabMenuView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
-            self.tabMenuView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+            if #available(iOS 11.0, *) {
+                self.tabMenuView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+            } else {
+                self.tabMenuView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+            }
         }
 
         self.delegate = self

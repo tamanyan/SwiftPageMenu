@@ -28,7 +28,7 @@ struct UnderlinePagerOption: PageMenuOptions {
     var menuCursor: PageMenuCursor {
         return .underline(barColor: Theme.mainColor, height: 2)
     }
-    
+
     var font: UIFont {
         return UIFont.systemFont(ofSize: UIFont.systemFontSize)
     }
