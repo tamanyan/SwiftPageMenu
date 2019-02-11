@@ -138,7 +138,7 @@ github "tamanyan/SwiftPageMenu"
 ```
 target 'MyApp' do
   use_frameworks!
-  pod 'SwiftPageMenu', '~> 1.4'
+  pod 'Swift_PageMenu', '~> 1.4'
 end
 ```
 
