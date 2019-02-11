@@ -7,7 +7,7 @@
 #
 
 Pod::Spec.new do |s|
-    s.name         = "SwiftPageMenu"
+    s.name         = "Swift_PageMenu"
     s.version      = "1.4.0"
     s.summary      = "Customizable Page Tab Menu Controller 👍"
     s.license      = { :type => 'MIT', :file => 'LICENSE' }
