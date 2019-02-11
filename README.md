@@ -24,7 +24,7 @@ This framework is reference by [msaps/Pageboy](https://github.com/msaps/Pageboy)
 ## Requirements
 
 - iOS 10.0+
-- Swift 4+
+- Swift 4.2+
 
 ## How to use
 
@@ -131,7 +131,16 @@ To integrate SwiftPageMenu into your Xcode project using Carthage, specify it in
 
 ```ruby
 github "tamanyan/SwiftPageMenu"
-```````
+```
+
+### CocoaPods
+
+```
+target 'MyApp' do
+  use_frameworks!
+  pod 'SwiftPageMenu', '~> 1.4'
+end
+```
 
 ## License
 
