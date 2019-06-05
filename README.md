@@ -34,6 +34,7 @@ SwiftPageMenu supports adding your own custom data sources.
 
 ```swift
 @objc public protocol PageMenuControllerDataSource: class {
+
     /// The view controllers to display in the page menu view controller.
     func viewControllers(forPageMenuController pageMenuController: PageMenuController) -> [UIViewController]
 
@@ -51,6 +52,7 @@ SwiftPageMenu give you the events below code.
 
 ```swift
 @objc public protocol PageMenuControllerDelegate: class {
+
     /// The page view controller will begin scrolling to a new page.
     @objc optional func pageMenuController(_ pageMenuController: PageMenuController,
                                            willScrollToPageAtIndex index: Int,
@@ -82,6 +84,7 @@ You can create own struct that conforms to this protocol.
 import SwiftPageMenu
 
 struct RoundRectPagerOption: PageMenuOptions {
+
     var isInfinite: Bool = false
 
     var tabMenuPosition: TabMenuPosition = .top
