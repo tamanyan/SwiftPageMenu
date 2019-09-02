@@ -342,6 +342,15 @@ class EMPageViewController: UIViewController, UIScrollViewDelegate {
             self.didFinishScrollingCompletionHandler?(true)
             self.didFinishScrollingCompletionHandler = nil
 
+            [self.selectedViewController, self.beforeViewController, self.afterViewController]
+                .forEach({
+                    $0?.view.subviews.forEach({
+                        if let scrollview = $0 as? UIScrollView {
+                            scrollview.isScrollEnabled = true
+                        }
+                    })
+                })
+
             // Load new before view controller if required
             if self.loadNewAdjoiningViewControllersOnFinish {
                 self.loadBeforeViewController(for: selectedViewController)
@@ -371,6 +380,15 @@ class EMPageViewController: UIViewController, UIScrollViewDelegate {
 
             self.didFinishScrollingCompletionHandler?(true)
             self.didFinishScrollingCompletionHandler = nil
+
+            [self.selectedViewController, self.beforeViewController, self.afterViewController]
+                .forEach({
+                    $0?.view.subviews.forEach({
+                        if let scrollview = $0 as? UIScrollView {
+                            scrollview.isScrollEnabled = true
+                        }
+                    })
+                })
 
             // Load new after view controller if required
             if self.loadNewAdjoiningViewControllersOnFinish {
@@ -421,6 +439,15 @@ class EMPageViewController: UIViewController, UIScrollViewDelegate {
 
             self.didFinishScrollingCompletionHandler?(false)
             self.didFinishScrollingCompletionHandler = nil
+
+            [self.selectedViewController, self.beforeViewController, self.afterViewController]
+                .forEach({
+                    $0?.view.subviews.forEach({
+                        if let scrollview = $0 as? UIScrollView {
+                            scrollview.isScrollEnabled = true
+                        }
+                    })
+                })
 
             if self.loadNewAdjoiningViewControllersOnFinish {
                 if (self.navigationDirection == .forward) {
@@ -511,6 +538,15 @@ class EMPageViewController: UIViewController, UIScrollViewDelegate {
 
     private func willScroll(from startingViewController: UIViewController?, to destinationViewController: UIViewController) {
         if (startingViewController != nil) {
+            [startingViewController, destinationViewController]
+                .forEach({
+                    $0?.view.subviews.forEach({
+                        if let scrollview = $0 as? UIScrollView {
+                            scrollview.isScrollEnabled = false
+                        }
+                    })
+                })
+
             self.delegate?.em_pageViewController?(self,
                                                   willStartScrollingFrom: startingViewController!,
                                                   destinationViewController: destinationViewController,

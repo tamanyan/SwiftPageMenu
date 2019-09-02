@@ -34,7 +34,7 @@ open class PageMenuController: UIViewController {
         guard let viewController = self.pageViewController.selectedViewController else {
             return nil
         }
-        return self.viewControllers.index(of: viewController)
+        return self.viewControllers.firstIndex(of: viewController)
     }
 
     fileprivate lazy var pageViewController: EMPageViewController = {
@@ -100,7 +100,8 @@ open class PageMenuController: UIViewController {
     }
 
     required public init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented, use init(coder: options:)")
+        self.options = DefaultPageMenuOption()
+        super.init(coder: coder)
     }
 
     public init?(coder: NSCoder, options: PageMenuOptions? = nil) {
@@ -277,7 +278,7 @@ open class PageMenuController: UIViewController {
             switch self.options.layout {
             case .layoutGuide:
                 if #available(iOS 11.0, *) {
-                    self.pageViewController.view.bottomAnchor.constraint(equalTo: self.bottomLayoutGuide.bottomAnchor).isActive = true
+                    self.pageViewController.view.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
                     self.tabView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
                 } else {
                     self.pageViewController.view.bottomAnchor.constraint(equalTo: self.bottomLayoutGuide.bottomAnchor).isActive = true
@@ -404,7 +405,7 @@ extension PageMenuController: EMPageViewControllerDelegate {
 
 extension PageMenuController: EMPageViewControllerDataSource {
     private func nextViewController(_ viewController: UIViewController, isAfter: Bool) -> UIViewController? {
-        guard var index = viewControllers.index(of: viewController) else { return nil }
+        guard var index = viewControllers.firstIndex(of: viewController) else { return nil }
 
         if isAfter {
             index += 1

@@ -17,6 +17,7 @@ class RootViewController: UITableViewController, UIGestureRecognizerDelegate {
         "infinite, roundRect",
         "infinite, underline",
         "infinite, roundRect, bottomMenu",
+        "standard, roundRect, storyboard",
     ]
 
     let items: [[String]] = [
@@ -110,6 +111,14 @@ class RootViewController: UITableViewController, UIGestureRecognizerDelegate {
                 items: items,
                 titles: tabTitles,
                 options: RoundRectPagerOption(isInfinite: true, tabMenuPosition: .bottom))
+            pageViewController.navigationItem.title = self.titles[indexPath.row]
+            self.navigationController?.pushViewController(pageViewController, animated: true)
+        } else if indexPath.row == 6 {
+            let pageViewController = StoryboardPageTabMenuViewController(
+                items: items,
+                titles: tabTitles,
+                options: RoundRectPagerOption())
+
             pageViewController.navigationItem.title = self.titles[indexPath.row]
             self.navigationController?.pushViewController(pageViewController, animated: true)
         }

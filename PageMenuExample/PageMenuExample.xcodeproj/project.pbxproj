@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		231816A3231D94E30064CF48 /* StoryboardChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231816A2231D94E30064CF48 /* StoryboardChildViewController.swift */; };
+		231816A5231D95090064CF48 /* StoryboardChildViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 231816A4231D95090064CF48 /* StoryboardChildViewController.storyboard */; };
+		231816A7231D96B00064CF48 /* StoryboardPageTabMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231816A6231D96B00064CF48 /* StoryboardPageTabMenuViewController.swift */; };
 		23C1D2461E73099D00A4A491 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23C1D2451E73099D00A4A491 /* Assets.xcassets */; };
 		23C1D2491E73099D00A4A491 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23C1D2471E73099D00A4A491 /* LaunchScreen.storyboard */; };
 		23C1D2581E7309B100A4A491 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C1D2511E7309B100A4A491 /* AppDelegate.swift */; };
@@ -52,6 +55,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		231816A2231D94E30064CF48 /* StoryboardChildViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardChildViewController.swift; sourceTree = "<group>"; };
+		231816A4231D95090064CF48 /* StoryboardChildViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StoryboardChildViewController.storyboard; sourceTree = "<group>"; };
+		231816A6231D96B00064CF48 /* StoryboardPageTabMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardPageTabMenuViewController.swift; sourceTree = "<group>"; };
 		23C1D23B1E73099D00A4A491 /* PageMenuExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PageMenuExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23C1D2451E73099D00A4A491 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		23C1D2481E73099D00A4A491 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -100,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				23C1D2451E73099D00A4A491 /* Assets.xcassets */,
+				231816A4231D95090064CF48 /* StoryboardChildViewController.storyboard */,
 				23C1D2471E73099D00A4A491 /* LaunchScreen.storyboard */,
 				23C1D24A1E73099D00A4A491 /* Info.plist */,
 			);
@@ -116,6 +123,8 @@
 				23C1D2551E7309B100A4A491 /* RoundRectPagerOptions.swift */,
 				23C1D2571E7309B100A4A491 /* UnderlinePagerOption.swift */,
 				23C1D2561E7309B100A4A491 /* Theme.swift */,
+				231816A2231D94E30064CF48 /* StoryboardChildViewController.swift */,
+				231816A6231D96B00064CF48 /* StoryboardPageTabMenuViewController.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -157,20 +166,20 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = Tamanyan;
 				TargetAttributes = {
 					23C1D23A1E73099D00A4A491 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 95Q9F9WGT3;
-						LastSwiftMigration = 1010;
+						DevelopmentTeam = XRWP5VMS4D;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
 			buildConfigurationList = 23C1D2361E73099D00A4A491 /* Build configuration list for PBXProject "PageMenuExample" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -208,6 +217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				23C1D2491E73099D00A4A491 /* LaunchScreen.storyboard in Resources */,
+				231816A5231D95090064CF48 /* StoryboardChildViewController.storyboard in Resources */,
 				23C1D2461E73099D00A4A491 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -221,7 +231,9 @@
 			files = (
 				23C1D2581E7309B100A4A491 /* AppDelegate.swift in Sources */,
 				23C1D25D1E7309B100A4A491 /* Theme.swift in Sources */,
+				231816A3231D94E30064CF48 /* StoryboardChildViewController.swift in Sources */,
 				23C1D25B1E7309B100A4A491 /* RootViewController.swift in Sources */,
+				231816A7231D96B00064CF48 /* StoryboardPageTabMenuViewController.swift in Sources */,
 				23C1D25C1E7309B100A4A491 /* RoundRectPagerOptions.swift in Sources */,
 				23C1D25E1E7309B100A4A491 /* UnderlinePagerOption.swift in Sources */,
 				23C1D25A1E7309B100A4A491 /* PageTabMenuViewController.swift in Sources */,
@@ -255,6 +267,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -314,6 +327,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -367,14 +381,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 95Q9F9WGT3;
+				DEVELOPMENT_TEAM = XRWP5VMS4D;
 				INFOPLIST_FILE = PageMenuExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tamanyan.SwiftPageMenu.PageMenuExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -383,14 +396,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 95Q9F9WGT3;
+				DEVELOPMENT_TEAM = XRWP5VMS4D;
 				INFOPLIST_FILE = PageMenuExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tamanyan.SwiftPageMenu.PageMenuExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
