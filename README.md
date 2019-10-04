@@ -30,8 +30,9 @@ This library is inspired by [msaps/Pageboy](https://github.com/msaps/Pageboy), [
 
 ### Example
 
-Here is an example of how to SwiftPageMenu [PageMenuExample/Sources/PageTabMenuViewController.swift](https://github.com/tamanyan/SwiftPageMenu/blob/master/PageMenuExample/Sources/PageTabMenuViewController.swift)
+Here is an example of how to SwiftPageMenu.
 
+[PageMenuExample/Sources/PageTabMenuViewController.swift](https://github.com/tamanyan/SwiftPageMenu/blob/master/PageMenuExample/Sources/PageTabMenuViewController.swift)
 
 ```swift
 import UIKit
