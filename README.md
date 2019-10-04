@@ -28,6 +28,65 @@ This library is inspired by [msaps/Pageboy](https://github.com/msaps/Pageboy), [
 
 ## How to use
 
+### Example
+
+Here is an example of how to SwiftPageMenu [PageMenuExample/Sources/PageTabMenuViewController.swift](https://github.com/tamanyan/SwiftPageMenu/blob/master/PageMenuExample/Sources/PageTabMenuViewController.swift)
+
+
+```swift
+import UIKit
+import SwiftPageMenu
+// import Swift_PageMenu if you use cocoapods
+
+class PageTabMenuViewController: PageMenuController {
+
+    let items: [[String]]
+
+    let titles: [String]
+
+    init(items: [[String]], titles: [String], options: PageMenuOptions? = nil) {
+        self.items = items
+        self.titles = titles
+        super.init(options: options)
+    }
+}
+
+extension PageTabMenuViewController: PageMenuControllerDataSource {
+    func viewControllers(forPageMenuController pageMenuController: PageMenuController) -> [UIViewController] {
+        return self.items.map(ChildViewController.init)
+    }
+
+    func menuTitles(forPageMenuController pageMenuController: PageMenuController) -> [String] {
+        return self.titles
+    }
+
+    func defaultPageIndex(forPageMenuController pageMenuController: PageMenuController) -> Int {
+        return 0
+    }
+}
+
+extension PageTabMenuViewController: PageMenuControllerDelegate {
+    func pageMenuController(_ pageMenuController: PageMenuController, didScrollToPageAtIndex index: Int, direction: PageMenuNavigationDirection) {
+        // The page view controller will begin scrolling to a new page.
+        print("didScrollToPageAtIndex index:\(index)")
+    }
+
+    func pageMenuController(_ pageMenuController: PageMenuController, willScrollToPageAtIndex index: Int, direction: PageMenuNavigationDirection) {
+        // The page view controller scroll progress between pages.
+        print("willScrollToPageAtIndex index:\(index)")
+    }
+
+    func pageMenuController(_ pageMenuController: PageMenuController, scrollingProgress progress: CGFloat, direction: PageMenuNavigationDirection) {
+        // The page view controller did complete scroll to a new page.
+        print("scrollingProgress progress: \(progress)")
+    }
+
+    func pageMenuController(_ pageMenuController: PageMenuController, didSelectMenuItem index: Int, direction: PageMenuNavigationDirection) {
+        print("didSelectMenuItem index: \(index)")
+    }
+}
+```
+
 ### DataSource
 
 SwiftPageMenu supports adding your own custom data sources.
