@@ -52,6 +52,7 @@ class PageTabMenuViewController: PageMenuController {
 }
 
 extension PageTabMenuViewController: PageMenuControllerDataSource {
+
     func viewControllers(forPageMenuController pageMenuController: PageMenuController) -> [UIViewController] {
         return self.items.map(ChildViewController.init)
     }
@@ -66,6 +67,7 @@ extension PageTabMenuViewController: PageMenuControllerDataSource {
 }
 
 extension PageTabMenuViewController: PageMenuControllerDelegate {
+
     func pageMenuController(_ pageMenuController: PageMenuController, didScrollToPageAtIndex index: Int, direction: PageMenuNavigationDirection) {
         // The page view controller will begin scrolling to a new page.
         print("didScrollToPageAtIndex index:\(index)")
