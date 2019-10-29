@@ -16,6 +16,6 @@ Pod::Spec.new do |s|
     s.source       = { :git => "https://github.com/tamanyan/SwiftPageMenu.git", :tag => "#{s.version}" }
     s.requires_arc = true
     s.source_files = 'Sources/**/*.{swift}'
-    s.swift_version = "5.0"
+    s.swift_version = "4.2"
     s.ios.deployment_target  = '10.0'
 end
