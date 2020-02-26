@@ -76,8 +76,6 @@ public protocol PageMenuOptions {
 
     var isInfinite: Bool { get }
 
-    var font: UIFont { get }
-
     var menuItemSize: PageMenuItemSize { get }
 
     var menuItemMargin: CGFloat { get }
@@ -85,6 +83,10 @@ public protocol PageMenuOptions {
     var menuTitleColor: UIColor { get }
 
     var menuTitleSelectedColor: UIColor { get }
+   
+    var menuTitleFont: UIFont  { get }
+    
+    var menuTitleSelectedfont: UIFont { get }
 
     var menuCursor: PageMenuCursor { get }
 
@@ -137,10 +139,15 @@ public struct DefaultPageMenuOption: PageMenuOptions {
     public var menuCursor: PageMenuCursor {
         return .roundRect(rectColor: UIColor(red: 3/255, green: 125/255, blue: 233/255, alpha: 1), cornerRadius: 10, height: 22, borderWidth: nil, borderColor: nil)
     }
-
-    public var font: UIFont {
-        return UIFont.systemFont(ofSize: UIFont.systemFontSize)
+    
+    public var  menuTitleFont: UIFont {
+          return UIFont.systemFont(ofSize: 16)
     }
+    
+    public var menuTitleSelectedfont: UIFont {
+        return UIFont.boldSystemFont(ofSize: 16)
+    }
+        
 
     public var tabMenuBackgroundColor: UIColor {
         return .white
@@ -148,3 +155,4 @@ public struct DefaultPageMenuOption: PageMenuOptions {
 
     public init() {}
 }
+
