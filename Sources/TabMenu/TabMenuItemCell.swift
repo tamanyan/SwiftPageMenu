@@ -77,7 +77,6 @@ class TabMenuItemCell: UICollectionViewCell {
 
     func configure(title: String, options: PageMenuOptions) {
         self.options = options
-        self.itemLabel.font = options.font
         self.itemLabel.text = title
         self.itemLabel.invalidateIntrinsicContentSize()
         self.invalidateIntrinsicContentSize()
@@ -124,7 +123,8 @@ extension TabMenuItemCell {
         guard let options = self.options else {
             return
         }
-
+        
+        self.itemLabel.font = options.menuTitleSelectedfont
         self.itemLabel.textColor = UIColor.interpolate(
             from: options.menuTitleColor,
             to: options.menuTitleSelectedColor,
@@ -136,6 +136,7 @@ extension TabMenuItemCell {
             return
         }
 
+        self.itemLabel.font = options.menuTitleFont
         self.itemLabel.textColor = UIColor.interpolate(
             from: options.menuTitleSelectedColor,
             to: options.menuTitleColor,

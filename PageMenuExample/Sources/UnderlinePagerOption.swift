@@ -29,8 +29,12 @@ struct UnderlinePagerOption: PageMenuOptions {
         return .underline(barColor: Theme.mainColor, height: 2)
     }
 
-    var font: UIFont {
-        return UIFont.systemFont(ofSize: UIFont.systemFontSize)
+    var menuTitleFont: UIFont {
+        return UIFont.systemFont(ofSize: 15)
+    }
+    
+    var menuTitleSelectedfont: UIFont {
+        return UIFont.boldSystemFont(ofSize: 16)
     }
     
     var menuItemMargin: CGFloat {
