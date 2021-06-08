@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol TabMenuItemCursor: class {
+protocol TabMenuItemCursor: AnyObject {
 
     var isHidden: Bool { get set }
 
