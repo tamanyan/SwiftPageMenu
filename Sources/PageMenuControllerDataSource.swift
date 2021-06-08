@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import UIKit
 
-@objc public protocol PageMenuControllerDataSource: class {
+@objc public protocol PageMenuControllerDataSource: AnyObject {
 
     /// The view controllers to display in the page menu view controller.
     func viewControllers(forPageMenuController pageMenuController: PageMenuController) -> [UIViewController]

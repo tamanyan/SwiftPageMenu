@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import UIKit
 
-protocol TabMenuItemCursor: class {
+protocol TabMenuItemCursor: AnyObject {
 
     var isHidden: Bool { get set }
 

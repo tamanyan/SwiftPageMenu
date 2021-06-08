@@ -23,8 +23,8 @@ This library is inspired by [msaps/Pageboy](https://github.com/msaps/Pageboy), [
 
 ## Requirements
 
-- iOS 10.0+
-- Swift 4.2+
+- iOS 12.0+
+- Swift 5+
 
 ## How to use
 
@@ -188,6 +188,14 @@ struct RoundRectPagerOption: PageMenuOptions {
         self.tabMenuPosition = tabMenuPosition
     }
 }
+```
+
+### Swift Package Manager
+
+SwiftPageMenu is available through Swift Package Manager. Add SwiftPageMenu as a dependency to your Package.swift
+
+```swift
+.package(url: "https://github.com/tamanyan/SwiftPageMenu", from: "1.5.0")
 ```
 
 ### Carthage
